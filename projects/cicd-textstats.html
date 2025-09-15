@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>City Mobility Pulse — Project Details</title>
+    <title>CI/CD TextStats — Project Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -87,11 +87,11 @@
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div data-aos="fade-right">
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                        <span class="gradient-text">City Mobility Pulse</span>
+                        <span class="gradient-text">CI/CD TextStats</span>
                     </h1>
-                    <h2 class="text-2xl md:text-3xl text-gray-600 mb-8">Real‑time Urban Mobility: Streams → Features → APIs → Dashboards</h2>
+                    <h2 class="text-2xl md:text-3xl text-gray-600 mb-8">From Text → Metrics → Reports — Automated, Tested, Delivered</h2>
                     <p class="text-lg text-gray-600 mb-8 max-w-lg">
-                        A production‑style platform that turns raw mobility signals (transit, traffic, micromobility) into live insights. This page explains the architecture, tools, and choices behind the pipeline before you jump into the code.
+                        A lightweight CLI tool for text analysis — word counts, readability, top keywords — built with a full CI/CD pipeline. This page explains the design, automation, and stack behind it before linking to the repo.
                     </p>
                     <div class="flex space-x-4">
                         <a href="#overview" class="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition shadow-lg">Read Overview</a>
@@ -101,7 +101,7 @@
                 <div data-aos="fade-left" class="flex justify-center">
                     <div class="relative">
                         <div class="absolute -inset-4 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-2xl blur opacity-75"></div>
-                        <img src="http://static.photos/technology/640x360/42" alt="City Mobility Pulse" class="relative rounded-2xl w-full max-w-md shadow-2xl">
+                        <img src="http://static.photos/technology/640x360/42" alt="CI/CD TextStats" class="relative rounded-2xl w-full max-w-md shadow-2xl">
                     </div>
                 </div>
             </div>
@@ -114,7 +114,7 @@
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Project Overview</h2>
                 <div class="w-20 h-1 bg-indigo-600 mx-auto"></div>
-                <p class="text-gray-600 mt-4 max-w-3xl mx-auto">An end‑to‑end urban mobility analytics workflow—covering streaming ingestion, validation, geospatial enrichment, feature engineering, forecasting, CI/CD, APIs, dashboards, and monitoring.</p>
+                <p class="text-gray-600 mt-4 max-w-3xl mx-auto">A practical project to showcase continuous integration & delivery on a Python CLI tool — covering code quality checks, testing, packaging, publishing, and automation.</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-12 items-start">
@@ -123,27 +123,27 @@
                     <div class="space-y-3">
                         <div class="flex items-start">
                             <i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5"></i>
-                            <p class="text-gray-700"><strong>Streaming Ingestion & Quality:</strong> Kafka topics for traffic/transit feeds; Spark Structured Streaming; Great Expectations for schema/drift.</p>
+                            <p class="text-gray-700"><strong>Core Functionality:</strong> Text analysis CLI (word count, unique words, top terms, readability scores).</p>
                         </div>
                         <div class="flex items-start">
                             <i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5"></i>
-                            <p class="text-gray-700"><strong>Geospatial Enrichment:</strong> GTFS & OpenStreetMap joins; grid/hex (H3) aggregation; GeoParquet/Delta.</p>
+                            <p class="text-gray-700"><strong>Testing:</strong> Pytest unit tests, CLI integration tests, coverage reports.</p>
                         </div>
                         <div class="flex items-start">
                             <i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5"></i>
-                            <p class="text-gray-700"><strong>Features & Forecasting:</strong> Reproducible transformations; demand & ETA models (XGBoost/Prophet); parity across train/serve.</p>
+                            <p class="text-gray-700"><strong>Code Quality:</strong> Pre-commit hooks, Black, Flake8, isort, mypy.</p>
                         </div>
                         <div class="flex items-start">
                             <i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5"></i>
-                            <p class="text-gray-700"><strong>Packaging & CI/CD:</strong> Docker images; GitHub Actions for tests, linting, and pipeline runs.</p>
+                            <p class="text-gray-700"><strong>CI/CD:</strong> GitHub Actions workflow for lint, test, build, publish.</p>
                         </div>
                         <div class="flex items-start">
                             <i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5"></i>
-                            <p class="text-gray-700"><strong>APIs & Dashboards:</strong> FastAPI endpoints for queries; Superset/Grafana for city‑wide KPIs & maps.</p>
+                            <p class="text-gray-700"><strong>Packaging:</strong> PyPI-ready setup with Poetry; versioning & changelogs.</p>
                         </div>
                         <div class="flex items-start">
                             <i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5"></i>
-                            <p class="text-gray-700"><strong>Monitoring:</strong> Data freshness SLAs; model & service metrics; alert hooks.</p>
+                            <p class="text-gray-700"><strong>Docs & Badges:</strong> README with usage, shields, and workflow status.</p>
                         </div>
                     </div>
                 </div>
@@ -151,8 +151,8 @@
                 <div data-aos="fade-left">
                     <h3 class="text-2xl font-semibold mb-4">Architecture (at a glance)</h3>
                     <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
-                        <img src="/assets/projects/city-mobility-pulse/architecture.png" alt="City Mobility Pulse Architecture" class="rounded-lg w-full mb-4">
-                        <p class="text-sm text-gray-600">High‑level flow: Streams → Validation → Geo/Features → Forecasting/Tracking → Packaging/CI → APIs/Dashboards → Monitoring.</p>
+                        <img src="/assets/projects/cicd-textstats/architecture.png" alt="City Mobility Pulse Architecture" class="rounded-lg w-full mb-4">
+                        <p class="text-sm text-gray-600">Flow: Code → Pre-commit → Tests → Build → Publish (PyPI) → Usage.</p>
                     </div>
                 </div>
             </div>
@@ -175,12 +175,12 @@
                             <i data-feather="database" class="text-indigo-600 w-8 h-8"></i>
                         </div>
                     </div>
-                    <h3 class="text-xl font-semibold text-center mb-4">Data & Streams</h3>
+                    <h3 class="text-xl font-semibold text-center mb-4">Language & Libraries</h3>
                     <ul class="space-y-2">
-                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>Kafka, Spark Structured Streaming</span></li>
-                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>GTFS, OpenStreetMap</span></li>
-                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>Delta/Parquet, GeoParquet</span></li>
-                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>Partitioning & H3 Aggregation</span></li>
+                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>Python 3, Click</span></li>
+                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>Textstat, Regex</span></li>
+                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>Pytest, Coverage</span></li>
+                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>Poetry packaging</span></li>
                     </ul>
                 </div>
                 <div data-aos="fade-up" data-aos-delay="200" class="bg-white p-8 rounded-xl shadow-md">
@@ -189,12 +189,12 @@
                             <i data-feather="cpu" class="text-purple-600 w-8 h-8"></i>
                         </div>
                     </div>
-                    <h3 class="text-xl font-semibold text-center mb-4">ML & Analytics</h3>
+                    <h3 class="text-xl font-semibold text-center mb-4">CI/CD & Quality</h3>
                     <ul class="space-y-2">
-                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>XGBoost, Prophet</span></li>
-                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>MLflow (experiments, artifacts)</span></li>
-                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>Feature parity train/serve</span></li>
-                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>Evaluation & drift checks</span></li>
+                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>GitHub Actions</span></li>
+                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>Black, Flake8, isort</span></li>
+                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>mypy (static typing)</span></li>
+                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>Pre-commit hooks</span></li>
                     </ul>
                 </div>
                 <div data-aos="fade-up" data-aos-delay="300" class="bg-white p-8 rounded-xl shadow-md">
@@ -203,12 +203,12 @@
                                 <i data-feather="cloud" class="text-blue-600 w-8 h-8"></i>
                             </div>
                         </div>
-                    <h3 class="text-xl font-semibold text-center mb-4">Ops & Delivery</h3>
+                    <h3 class="text-xl font-semibold text-center mb-4">Delivery & Docs</h3>
                     <ul class="space-y-2">
-                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>Docker, Kubernetes</span></li>
-                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>GitHub Actions (CI/CD)</span></li>
-                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>FastAPI, Superset/Grafana</span></li>
-                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>IaC‑ready (Terraform layout)</span></li>
+                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>PyPI publish</span></li>
+                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>README badges</span></li>
+                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>CLI usage examples</span></li>
+                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>Changelog/versioning</span></li>
                     </ul>
                 </div>
             </div>
@@ -226,24 +226,24 @@
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="bg-white rounded-xl shadow-md overflow-hidden">
-                    <img src="/assets/projects/city-mobility-pulse/screen-dashboard.png" alt="Mobility Dashboard" class="w-full h-48 object-cover">
+                    <img src="/assets/projects/cicd-textstats/screen-cli.png" alt="CLI Output" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-lg font-semibold mb-2">City KPIs & Map</h3>
-                        <p class="text-gray-600 text-sm">Live congestion & demand metrics with geospatial layers.</p>
+                        <h3 class="text-lg font-semibold mb-2">CLI in Action</h3>
+                        <p class="text-gray-600 text-sm">Running the tool with sample text, showing top terms & readability.</p>
                     </div>
                 </div>
                 <div class="bg-white rounded-xl shadow-md overflow-hidden">
-                    <img src="/assets/projects/city-mobility-pulse/screen-stream.png" alt="Streaming Pipeline" class="w-full h-48 object-cover">
+                    <img src="/assets/projects/cicd-textstats/screen-ci.png" alt="CI Pipeline" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-lg font-semibold mb-2">Streaming Pipeline</h3>
-                        <p class="text-gray-600 text-sm">Kafka → Spark Structured Streaming with quality gates.</p>
+                        <h3 class="text-lg font-semibold mb-2">CI Workflow</h3>
+                        <p class="text-gray-600 text-sm">GitHub Actions running tests, lint, and build.</p>
                     </div>
                 </div>
                 <div class="bg-white rounded-xl shadow-md overflow-hidden">
-                    <img src="/assets/projects/city-mobility-pulse/screen-ml.png" alt="Forecasting Runs" class="w-full h-48 object-cover">
+                    <img src="/assets/projects/cicd-textstats/screen-pypi.png" alt="PyPI Package" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-lg font-semibold mb-2">Forecasting Runs</h3>
-                        <p class="text-gray-600 text-sm">MLflow‑tracked models for demand and ETAs.</p>
+                        <h3 class="text-lg font-semibold mb-2">PyPI Package</h3>
+                        <p class="text-gray-600 text-sm">Published package with version and install instructions.</p>
                     </div>
                 </div>
             </div>
@@ -258,7 +258,7 @@
                 <div>
                     <h3 class="text-2xl font-semibold mb-4">Quick Links</h3>
                     <ul class="space-y-3">
-                        <li class="flex items-start"><i data-feather="github" class="mr-2"></i><a href="https://github.com/airdmhund1/city-mobility-pulse" target="_blank" class="text-indigo-600 hover:text-indigo-800">GitHub Repository</a></li>
+                        <li class="flex items-start"><i data-feather="github" class="mr-2"></i><a href="https://github.com/airdmhund1/cicd-textstats" target="_blank" class="text-indigo-600 hover:text-indigo-800">GitHub Repository</a></li>
                         <li class="flex items-start"><i data-feather="book-open" class="mr-2"></i><a href="#overview" class="text-indigo-600 hover:text-indigo-800">Project Overview</a></li>
                         <li class="flex items-start"><i data-feather="image" class="mr-2"></i><a href="#gallery" class="text-indigo-600 hover:text-indigo-800">Screenshots & Results</a></li>
                     </ul>
@@ -267,13 +267,11 @@
                     <h3 class="text-2xl font-semibold mb-4">How to Run (Local)</h3>
                     <div class="bg-white rounded-xl border p-4 text-sm text-gray-700">
                         <p class="mb-2"><strong>Prereqs:</strong> Docker, Make, Python 3.10+</p>
-                        <pre class="bg-gray-900 text-gray-100 p-3 rounded mb-2 overflow-auto"><code>git clone https://github.com/airdmhund1/city-mobility-pulse
-cd city-mobility-pulse
-make setup   # install deps / pre-commit
-make stream  # run Kafka + Spark streaming locally
-make api     # start FastAPI for mobility queries
-make dash    # launch Superset/Grafana
-make test    # unit tests & data checks</code></pre>
+                        <pre class="bg-gray-900 text-gray-100 p-3 rounded mb-2 overflow-auto"><code>git clone https://github.com/airdmhund1/cicd-textstats
+cd cicd-textstats
+poetry install   # install deps
+pytest           # run tests
+textstats --text "Hello world" --top 5</code></pre>
                         <p class="text-gray-600">Environment variables and config files are documented in the repo’s README.</p>
                     </div>
                 </div>
