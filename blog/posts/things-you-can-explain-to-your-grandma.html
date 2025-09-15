@@ -31,6 +31,12 @@
         .skill-badge:hover {
             transform: scale(1.05);
         }
+        /* Sticky navigation state */
+        #site-nav { transition: background-color .2s ease, box-shadow .2s ease, color .2s ease; }
+        #site-nav.nav-scrolled { background-color: rgba(17,24,39,.9); box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -2px rgba(0,0,0,.05); }
+        #site-nav.nav-scrolled a { color: #f9fafb !important; }
+        #site-nav.nav-scrolled a:hover { color: #a5b4fc !important; }
+        #site-nav.nav-scrolled .feather { color: #f9fafb !important; }
     </style>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MLR16RB8XD"></script>
     <script>
@@ -46,7 +52,7 @@
     <div id="readbar" class="fixed top-0 left-0 h-1 bg-indigo-600 z-50" style="width:0%"></div>
     
     <!-- Navigation -->
-    <nav class="relative z-10 bg-white/80 backdrop-blur-md shadow-sm">
+    <nav id="site-nav" class="sticky top-0 z-30 bg-white/80 backdrop-blur-md shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
@@ -461,6 +467,19 @@
         document.addEventListener('scroll', setReadbar, { passive: true });
         window.addEventListener('resize', setReadbar);
         setReadbar();
+
+        // Sticky nav color toggle on scroll
+        (function(){
+          var nav = document.getElementById('site-nav');
+          if (!nav) return;
+          function onScroll(){
+            if (window.scrollY > 10) { nav.classList.add('nav-scrolled'); }
+            else { nav.classList.remove('nav-scrolled'); }
+          }
+          document.addEventListener('scroll', onScroll, { passive: true });
+          window.addEventListener('load', onScroll);
+          onScroll();
+        })();
     </script>
 </body>
 </html>

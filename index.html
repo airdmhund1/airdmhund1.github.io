@@ -31,6 +31,12 @@
         .skill-badge:hover {
             transform: scale(1.05);
         }
+        /* Sticky navigation state */
+        #site-nav { transition: background-color .2s ease, box-shadow .2s ease, color .2s ease; }
+        #site-nav.nav-scrolled { background-color: rgba(17,24,39,.9); box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -2px rgba(0,0,0,.05); }
+        #site-nav.nav-scrolled a { color: #f9fafb !important; }
+        #site-nav.nav-scrolled a:hover { color: #a5b4fc !important; }
+        #site-nav.nav-scrolled .feather { color: #f9fafb !important; }
     </style>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MLR16RB8XD"></script>
     <script>
@@ -45,7 +51,7 @@
     <div id="vanta-bg" class="fixed top-0 left-0 w-full h-full z-0"></div>
     
     <!-- Navigation -->
-    <nav class="relative z-10 bg-white/80 backdrop-blur-md shadow-sm">
+    <nav id="site-nav" class="sticky top-0 z-30 bg-white/80 backdrop-blur-md shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
@@ -373,12 +379,11 @@
             <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-1" data-aos="fade-up">
                 <div class="bg-white rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center md:items-center justify-between">
                     <div class="max-w-2xl">
-                        <h3 class="text-2xl font-semibold mb-2">Latest notes, lessons, and build logs</h3>
-                        <p class="text-gray-600">Git tricks that save releases, Spark performance fixes, CI/CD patterns, and practical guides you can use today.</p>
+                        <h3 class="text-2xl font-semibold mb-2">Fresh lessons and practical tips</h3>
+                        <p class="text-gray-600">Real world posts on life and career plus short, hands on hacks. Expect templates you can copy, focus habits that help you ship, and simple diagrams you can share.</p>
                         <div class="mt-4 flex flex-wrap gap-2">
-                            <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded">Hacks & Tips</span>
-                            <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded">Deep Dives</span>
-                            <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded">Personal</span>
+                            <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded">Life and career</span>
+                            <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded">Tips</span>
                         </div>
                     </div>
                     <a href="blog/index.html" class="mt-6 md:mt-0 inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition shadow-lg">
@@ -570,6 +575,18 @@
                 document.getElementById('mobile-menu').classList.add('hidden');
             });
         });
+        // Sticky nav color toggle on scroll
+        (function(){
+          var nav = document.getElementById('site-nav');
+          if (!nav) return;
+          function onScroll(){
+            if (window.scrollY > 10) { nav.classList.add('nav-scrolled'); }
+            else { nav.classList.remove('nav-scrolled'); }
+          }
+          document.addEventListener('scroll', onScroll, { passive: true });
+          window.addEventListener('load', onScroll);
+          onScroll();
+        })();
     </script>
 </body>
 </html>

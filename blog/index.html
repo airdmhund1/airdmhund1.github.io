@@ -31,6 +31,12 @@
         .skill-badge:hover {
             transform: scale(1.05);
         }
+        /* Sticky navigation state */
+        #site-nav { transition: background-color .2s ease, box-shadow .2s ease, color .2s ease; }
+        #site-nav.nav-scrolled { background-color: rgba(17,24,39,.9); box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -2px rgba(0,0,0,.05); }
+        #site-nav.nav-scrolled a { color: #f9fafb !important; }
+        #site-nav.nav-scrolled a:hover { color: #a5b4fc !important; }
+        #site-nav.nav-scrolled .feather { color: #f9fafb !important; }
     </style>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MLR16RB8XD"></script>
     <script>
@@ -45,7 +51,7 @@
     <div id="vanta-bg" class="fixed top-0 left-0 w-full h-full z-0"></div>
     
     <!-- Navigation -->
-    <nav class="relative z-10 bg-white/80 backdrop-blur-md shadow-sm">
+    <nav id="site-nav" class="sticky top-0 z-30 bg-white/80 backdrop-blur-md shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
@@ -90,7 +96,7 @@
       <div class="max-w-7xl mx-auto">
         <div class="text-center max-w-3xl mx-auto" data-aos="fade-up">
           <h1 class="text-4xl md:text-5xl font-bold mb-4">The Build Log</h1>
-          <p class="text-gray-600 text-lg">Notes from the workbench. Every post is written by me, Edmund. Expect practical tutorials, short hacks, and the occasional deep dive. Grab a coffee and enjoy.</p>
+          <p class="text-gray-600 text-lg">Useful stories and practical tips. This blog now runs on two tracks: Life and career for relatable lessons, and Tips for short, hands on hacks. Everything is written by me. New posts land regularly, so browse, search, and enjoy.</p>
         </div>
         <div class="mt-10 flex items-center justify-center gap-4" data-aos="fade-up" data-aos-delay="100">
           <div class="flex -space-x-2">
@@ -105,30 +111,33 @@
     <section class="relative z-10 py-6 bg-gray-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4" data-aos="fade-up">
-          <div class="flex flex-wrap gap-2" id="category-filters">
-            <button data-category="all" class="px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 text-sm hover:bg-gray-100 active-filter">All</button>
-            <button data-category="hacks" class="px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 text-sm hover:bg-gray-100">Hacks & Tips</button>
-            <button data-category="deep" class="px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 text-sm hover:bg-gray-100">Deep Dives</button>
-            <button data-category="personal" class="px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 text-sm hover:bg-gray-100">Personal</button>
+          <div class="flex items-center gap-2" id="filter-pills">
+            <button class="filter-pill px-3 py-1.5 rounded-lg text-sm bg-indigo-600 text-white" data-filter="all">All</button>
+            <button class="filter-pill px-3 py-1.5 rounded-lg text-sm bg-white text-gray-700 border" data-filter="life">Life and career</button>
+            <button class="filter-pill px-3 py-1.5 rounded-lg text-sm bg-white text-gray-700 border" data-filter="tips">Tips</button>
           </div>
-          <div class="relative">
-            <input id="post-search" type="text" placeholder="Search posts" class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 w-full md:w-72" />
+          <div class="relative w-full md:w-96">
+            <input id="post-search" type="text" placeholder="Search posts" class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 w-full" />
             <i data-feather="search" class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Posts Grid -->
-    <section class="relative z-10 py-14 bg-white">
+    <!-- Relatable & Personal Section -->
+    <section class="relative z-10 py-10 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="posts-grid">
+        <div class="mb-6" data-aos="fade-up">
+          <h2 class="text-2xl md:text-3xl font-bold">Life and career</h2>
+          <p class="text-gray-600">Personal lessons and career ideas people can use right away.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="personal-grid">
 
-          <!-- Card 1 -->
-           <a href="posts/fitness-habits-for-engineers.html" class="group block bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden" data-category="personal" data-title="fitness habits for engineers">
+          <!-- Fitness -->
+          <a href="posts/fitness-habits-for-engineers.html" class="post-card group block bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden" data-category="life" data-title="fitness habits that make better engineers">
             <div class="relative h-44 overflow-hidden">
               <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Fitness">
-              <span class="absolute top-3 left-3 bg-emerald-600 text-white text-xs px-2 py-1 rounded">Personal</span>
+              <span class="absolute top-3 left-3 bg-emerald-600 text-white text-xs px-2 py-1 rounded">Relatable</span>
             </div>
             <div class="p-5">
               <h3 class="text-lg font-semibold mb-1">Fitness habits that make better engineers</h3>
@@ -141,18 +150,15 @@
             </div>
           </a>
 
-
-          
-
-          <!-- Card 2 -->
-          <a href="posts/side-projects.html" class="group block bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden" data-category="deep" data-title="spark performance checklist">
+          <!-- Side projects -->
+          <a href="posts/side-projects.html" class="post-card group block bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden" data-category="life" data-title="side projects are like gyms">
             <div class="relative h-44 overflow-hidden">
               <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Laptop and coffee for side projects focus">
-              <span class="absolute top-3 left-3 bg-indigo-600 text-white text-xs px-2 py-1 rounded">Deep Dive</span>
+              <span class="absolute top-3 left-3 bg-emerald-600 text-white text-xs px-2 py-1 rounded">Relatable</span>
             </div>
             <div class="p-5">
               <h3 class="text-lg font-semibold mb-1">Side projects are like gyms - you always pay, but do you go?</h3>
-              <p class="text-gray-600 text-sm mb-3">  Domains bought, repos started, motivation fizzled — here’s how to treat side projects like training and finally ship.</p>
+              <p class="text-gray-600 text-sm mb-3">Domains bought, repos started, motivation fizzled. Treat side projects like training and finally ship.</p>
               <div class="flex items-center text-xs text-gray-500 gap-3">
                 <span>September 7 2025</span>
                 <span>•</span>
@@ -161,15 +167,15 @@
             </div>
           </a>
 
-          <!-- Card 3 -->
-          <a href="posts/career-ladders-vs-climbing-walls.html" class="group block bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden" data-category="deep" data-title="cicd for data pipelines">
+          <!-- Career ladders vs walls -->
+          <a href="posts/career-ladders-vs-climbing-walls.html" class="post-card group block bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden" data-category="life" data-title="career ladders vs climbing walls">
             <div class="relative h-44 overflow-hidden">
               <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?q=80&w=1600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Climber scaling a wall with multiple routes">
-              <span class="absolute top-3 left-3 bg-indigo-600 text-white text-xs px-2 py-1 rounded">Deep Dive</span>
+              <span class="absolute top-3 left-3 bg-emerald-600 text-white text-xs px-2 py-1 rounded">Relatable</span>
             </div>
             <div class="p-5">
               <h3 class="text-lg font-semibold mb-1">Career ladders vs. climbing walls</h3>
-              <p class="text-gray-600 text-sm mb-3">Careers aren’t ladders, they’re climbing walls. Sideways moves and skill stacks open new routes.</p>
+              <p class="text-gray-600 text-sm mb-3">Careers are not ladders. Sideways moves and skill stacks open new routes.</p>
               <div class="flex items-center text-xs text-gray-500 gap-3">
                 <span>September 2 2025</span>
                 <span>•</span>
@@ -178,32 +184,15 @@
             </div>
           </a>
 
-          <!-- Card 4 -->
-          <a href="posts/things-you-can-explain-to-your-grandma.html" class="group block bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden" data-category="hacks" data-title="terminal power moves">
-            <div class="relative h-44 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Terminal">
-              <span class="absolute top-3 left-3 bg-black/70 text-white text-xs px-2 py-1 rounded">Hacks & Tips</span>
-            </div>
-            <div class="p-5">
-              <h3 class="text-lg font-semibold mb-1">Things you can explain to your grandma with diagrams</h3>
-              <p class="text-gray-600 text-sm mb-3">Explaining tech with napkin-style diagrams: internet as post office, cookies as claim slips, cloud as apartments.</p>
-              <div class="flex items-center text-xs text-gray-500 gap-3">
-                <span>August 28 2025</span>
-                <span>•</span>
-                <span>4 min read</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Card 5 -->
-          <a href="posts/if-your-life-had-a-read-me.html" class="group block bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden" data-category="hacks" data-title="git bisect speedrun">
+          <!-- Life README -->
+          <a href="posts/if-your-life-had-a-read-me.html" class="post-card group block bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden" data-category="life" data-title="if your life had a readme">
             <div class="relative h-44 overflow-hidden">
               <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Git Tricks">
-              <span class="absolute top-3 left-3 bg-black/70 text-white text-xs px-2 py-1 rounded">Hacks & Tips</span>
+              <span class="absolute top-3 left-3 bg-emerald-600 text-white text-xs px-2 py-1 rounded">Relatable</span>
             </div>
             <div class="p-5">
               <h3 class="text-lg font-semibold mb-1">If your life had a README</h3>
-              <p class="text-gray-600 text-sm mb-3">Your life, documented like a repo. Clear, friendly, and easy to share.</p>
+              <p class="text-gray-600 text-sm mb-3">A playful life README template anyone can copy to reduce guesswork and build trust.</p>
               <div class="flex items-center text-xs text-gray-500 gap-3">
                 <span>August 23 2025</span>
                 <span>•</span>
@@ -212,15 +201,32 @@
             </div>
           </a>
 
-          <!-- Card 6 -->
-          <a href="posts/myth-of-multitasking-in-engineering.html" class="group block bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden" data-category="deep" data-title="synthetic data why it matters">
+          <!-- Grandma diagrams (moved from hacks-grid) -->
+          <a href="posts/things-you-can-explain-to-your-grandma.html" class="post-card group block bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden" data-category="life" data-title="things you can explain to your grandma with diagrams">
             <div class="relative h-44 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Synthetic Data">
-              <span class="absolute top-3 left-3 bg-indigo-600 text-white text-xs px-2 py-1 rounded">Deep Dive</span>
+              <img src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Terminal">
+              <span class="absolute top-3 left-3 bg-emerald-600 text-white text-xs px-2 py-1 rounded">Relatable</span>
             </div>
             <div class="p-5">
-              <h3 class="text-lg font-semibold mb-1">The Myth of Multitasking in Engineering (and what to do instead)</h3>
-              <p class="text-gray-600 text-sm mb-3">Why multitasking drains engineers and how focus habits ship more with less stress.</p>
+              <h3 class="text-lg font-semibold mb-1">Things you can explain to your grandma with diagrams</h3>
+              <p class="text-gray-600 text-sm mb-3">Explain the internet, cookies, cloud and more with friendly box and arrow diagrams.</p>
+              <div class="flex items-center text-xs text-gray-500 gap-3">
+                <span>August 28 2025</span>
+                <span>•</span>
+                <span>4 min read</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Myth of multitasking (moved from hacks-grid) -->
+          <a href="posts/myth-of-multitasking-in-engineering.html" class="post-card group block bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden" data-category="life" data-title="myth of multitasking in engineering">
+            <div class="relative h-44 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Whiteboard planning">
+              <span class="absolute top-3 left-3 bg-emerald-600 text-white text-xs px-2 py-1 rounded">Relatable</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold mb-1">The myth of multitasking in engineering</h3>
+              <p class="text-gray-600 text-sm mb-3">Multitasking feels fast but ships slow. Habits that cut switches and raise throughput.</p>
               <div class="flex items-center text-xs text-gray-500 gap-3">
                 <span>August 18 2025</span>
                 <span>•</span>
@@ -230,13 +236,35 @@
           </a>
 
         </div>
+      </div>
+    </section>
 
-        <!-- Load more or CTA -->
-        <div class="text-center mt-12" data-aos="fade-up">
-          <a href="#contact" class="inline-flex items-center px-6 py-3 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition">
-            Request a topic
-            <i data-feather="arrow-right" class="ml-2"></i>
+    <!-- Hacks & Tips Section -->
+    <section class="relative z-10 py-10 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-6" data-aos="fade-up">
+          <h2 class="text-2xl md:text-3xl font-bold">Hacks and tips</h2>
+          <p class="text-gray-600">Short, practical pieces for shipping faster and with less stress.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="hacks-grid">
+
+          <!-- Featured tip placeholder -->
+          <a href="#" class="post-card group block bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden" data-category="tips" data-title="tiny automation big wins">
+            <div class="relative h-44 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Notebook planning">
+              <span class="absolute top-3 left-3 bg-black/70 text-white text-xs px-2 py-1 rounded">Tips</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold mb-1">Tiny automation, big wins</h3>
+              <p class="text-gray-600 text-sm mb-3">Keyboard macros, Git aliases, and small scripts that save hours. Coming soon.</p>
+              <div class="flex items-center text-xs text-gray-500 gap-3">
+                <span>Coming soon</span>
+                <span>•</span>
+                <span>3 min read</span>
+              </div>
+            </div>
           </a>
+
         </div>
       </div>
     </section>
@@ -265,32 +293,46 @@
     </footer>
 
     <script>
-      // Simple category filter
-      const filters = document.querySelectorAll('#category-filters button');
-      const cards = document.querySelectorAll('#posts-grid a');
-      filters.forEach(btn => {
+      // Cards
+      const cards = Array.from(document.querySelectorAll('a.post-card'));
+      const search = document.getElementById('post-search');
+      const pills = Array.from(document.querySelectorAll('#filter-pills .filter-pill'));
+
+      let activeFilter = 'all';
+      let query = '';
+
+      function applyFilters() {
+        cards.forEach(card => {
+          const title = (card.getAttribute('data-title') || '').toLowerCase();
+          const cat = (card.getAttribute('data-category') || '').toLowerCase();
+          const matchesText = !query || title.includes(query);
+          const matchesCat = activeFilter === 'all' || cat === activeFilter;
+          card.classList.toggle('hidden', !(matchesText && matchesCat));
+        });
+      }
+
+      // Search
+      if (search) {
+        search.addEventListener('input', () => {
+          query = search.value.toLowerCase().trim();
+          applyFilters();
+        });
+      }
+
+      // Filter pills
+      pills.forEach(btn => {
         btn.addEventListener('click', () => {
-          filters.forEach(b => b.classList.remove('active-filter'));
-          btn.classList.add('active-filter');
-          const cat = btn.getAttribute('data-category');
-          cards.forEach(card => {
-            const show = cat === 'all' || card.getAttribute('data-category') === cat;
-            card.classList.toggle('hidden', !show);
-          });
+          activeFilter = btn.getAttribute('data-filter');
+          pills.forEach(b => b.classList.remove('bg-indigo-600','text-white'));
+          pills.forEach(b => b.classList.add('bg-white','text-gray-700','border'));
+          btn.classList.add('bg-indigo-600','text-white');
+          btn.classList.remove('bg-white','text-gray-700','border');
+          applyFilters();
         });
       });
 
-      // Simple search by title
-      const search = document.getElementById('post-search');
-      if (search) {
-        search.addEventListener('input', () => {
-          const q = search.value.toLowerCase();
-          cards.forEach(card => {
-            const t = card.getAttribute('data-title');
-            card.classList.toggle('hidden', !(t && t.includes(q)));
-          });
-        });
-      }
+      // Initial state
+      applyFilters();
     </script>
     <script>
         // Initialize animations
@@ -342,6 +384,18 @@
                 document.getElementById('mobile-menu').classList.add('hidden');
             });
         });
+        // Sticky nav color toggle on scroll
+        (function(){
+          var nav = document.getElementById('site-nav');
+          if (!nav) return;
+          function onScroll(){
+            if (window.scrollY > 10) { nav.classList.add('nav-scrolled'); }
+            else { nav.classList.remove('nav-scrolled'); }
+          }
+          document.addEventListener('scroll', onScroll, { passive: true });
+          window.addEventListener('load', onScroll);
+          onScroll();
+        })();
     </script>
 </body>
 </html>
