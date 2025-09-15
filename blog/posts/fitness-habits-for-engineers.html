@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data & Software Engineer Portfolio</title>
+    <title>Fitness Habits That Make Better Engineers - Edmund Adu Asamoah</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -43,6 +43,7 @@
 </head>
 <body class="bg-gray-50 text-gray-800">
     <div id="vanta-bg" class="fixed top-0 left-0 w-full h-full z-0"></div>
+    <div id="readbar" class="fixed top-0 left-0 h-1 bg-indigo-600 z-50" style="width:0%"></div>
     
     <!-- Navigation -->
     <nav class="relative z-10 bg-white/80 backdrop-blur-md shadow-sm">
@@ -52,12 +53,12 @@
                     <span class="text-xl font-bold gradient-text">EA Solutions</span>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="../index.html" class="text-gray-700 hover:text-indigo-600 transition">Home</a>
-                    <a href="../about.html" class="text-gray-700 hover:text-indigo-600 transition">About</a>
-                    <a href="../index.html#skills" class="text-gray-700 hover:text-indigo-600 transition">Skills</a>
-                    <a href="../projects/index.html" class="text-gray-700 hover:text-indigo-600 transition">Projects</a>
-                    <a href="#" class="text-gray-700 hover:text-indigo-600 transition">Blog</a>
-                    <a href="../index.html#contact" class="text-gray-700 hover:text-indigo-600 transition">Contact</a>
+                    <a href="../../index.html" class="text-gray-700 hover:text-indigo-600 transition">Home</a>
+                    <a href="../../about.html" class="text-gray-700 hover:text-indigo-600 transition">About</a>
+                    <a href="../../index.html#skills" class="text-gray-700 hover:text-indigo-600 transition">Skills</a>
+                    <a href="../../projects/index.html" class="text-gray-700 hover:text-indigo-600 transition">Projects</a>
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 transition">Blog</a>
+                    <a href="../../index.html#contact" class="text-gray-700 hover:text-indigo-600 transition">Contact</a>
                 </div>
                 <div class="md:hidden flex items-center">
                     <button id="menu-toggle" class="text-gray-700">
@@ -76,164 +77,220 @@
             </button>
         </div>
         <div class="flex flex-col space-y-6 mt-8">
-            <a href="../index.html" class="text-xl text-gray-700 hover:text-indigo-600 transition">Home</a>
-            <a href="../about.html" class="text-xl text-gray-700 hover:text-indigo-600 transition">About</a>
-            <a href="../index.html#skills" class="text-xl text-gray-700 hover:text-indigo-600 transition">Skills</a>
-            <a href="../projects/index.html" class="text-xl text-gray-700 hover:text-indigo-600 transition">Projects</a>
-            <a href="#" class="text-xl text-gray-700 hover:text-indigo-600 transition">Blog</a>
-            <a href="../index.html#contact" class="text-xl text-gray-700 hover:text-indigo-600 transition">Contact</a>
+            <a href="../../index.html" class="text-xl text-gray-700 hover:text-indigo-600 transition">Home</a>
+            <a href="../../about.html" class="text-xl text-gray-700 hover:text-indigo-600 transition">About</a>
+            <a href="../../index.html#skills" class="text-xl text-gray-700 hover:text-indigo-600 transition">Skills</a>
+            <a href="../../projects/index.html" class="text-xl text-gray-700 hover:text-indigo-600 transition">Projects</a>
+            <a href="index.html" class="text-xl text-gray-700 hover:text-indigo-600 transition">Blog</a>
+            <a href="../../index.html#contact" class="text-xl text-gray-700 hover:text-indigo-600 transition">Contact</a>
         </div>
     </div>
 
-    <!-- Blog Hero / Intro -->
-    <section class="relative z-10 py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-white">
-      <div class="max-w-7xl mx-auto">
-        <div class="text-center max-w-3xl mx-auto" data-aos="fade-up">
-          <h1 class="text-4xl md:text-5xl font-bold mb-4">The Build Log</h1>
-          <p class="text-gray-600 text-lg">Notes from the workbench. Every post is written by me, Edmund. Expect practical tutorials, short hacks, and the occasional deep dive. Grab a coffee and enjoy.</p>
-        </div>
-        <div class="mt-10 flex items-center justify-center gap-4" data-aos="fade-up" data-aos-delay="100">
+    <!-- Post Hero -->
+    <section class="relative z-10 py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+      <div class="max-w-3xl mx-auto" data-aos="fade-up">
+        <a href="../index.html" class="inline-flex items-center text-sm text-gray-500 hover:text-indigo-600 mb-6">
+          <i data-feather="arrow-left" class="mr-2 h-4 w-4"></i> Back to Blog
+        </a>
+        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">Fitness habits that make better engineers</h1>
+        <div class="flex items-center gap-4 text-sm text-gray-500">
           <div class="flex -space-x-2">
-            <img src="https://api.dicebear.com/7.x/initials/svg?seed=EA" alt="Author" class="w-10 h-10 rounded-full ring-2 ring-white">
+            <img src="https://api.dicebear.com/7.x/initials/svg?seed=EA" alt="Edmund" class="w-9 h-9 rounded-full ring-2 ring-white">
           </div>
-          <div class="text-sm text-gray-700">By <span class="font-semibold">Edmund Adu Asamoah</span> • Updated regularly</div>
+          <span>By <span class="font-semibold">Edmund Adu Asamoah</span></span>
+          <span>Sep 2025</span>
+          <span>•</span>
+          <span>6 min read</span>
         </div>
       </div>
     </section>
 
-    <!-- Filters/Search -->
-    <section class="relative z-10 py-6 bg-gray-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4" data-aos="fade-up">
-          <div class="flex flex-wrap gap-2" id="category-filters">
-            <button data-category="all" class="px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 text-sm hover:bg-gray-100 active-filter">All</button>
-            <button data-category="hacks" class="px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 text-sm hover:bg-gray-100">Hacks & Tips</button>
-            <button data-category="deep" class="px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 text-sm hover:bg-gray-100">Deep Dives</button>
-            <button data-category="personal" class="px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 text-sm hover:bg-gray-100">Personal</button>
+    <!-- Post Body -->
+    <section class="relative z-10 pb-10 md:pb-14 px-4 sm:px-6 lg:px-8 bg-white">
+      <div class="max-w-3xl mx-auto space-y-10">
+
+        <!-- Feature image -->
+        <figure class="rounded-2xl overflow-hidden shadow-md" data-aos="fade-up">
+          <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1600&auto=format&fit=crop" alt="Training and engineering mindset" class="w-full h-72 object-cover">
+          <figcaption class="text-sm text-gray-500 px-4 py-3 bg-white">Training taught me consistency. Consistency ships code.</figcaption>
+        </figure>
+
+        <!-- Intro paragraphs -->
+        <div class="space-y-6 text-gray-800 leading-relaxed" data-aos="fade-up">
+          <p class="text-lg">I used to think the gym was for athletes and the terminal was for engineers. Then I trained consistently and realized they are basically the same game with different weights. I now train 5 to 6 times a week. Some mornings are for cardio, some evenings for weights. The results showed up in my health, my focus, and my pull requests.</p>
+          <p>Ghana raised me, Scotland shaped me, and training glued it together. When projects got noisy, routine kept me steady. Tiny boring reps beat heroic sprints. That idea flipped a switch for me at work too.</p>
+        </div>
+
+        <!-- Quick stats cards -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" data-aos="fade-up">
+          <div class="p-4 rounded-xl bg-gray-50 border border-gray-100 text-center">
+            <div class="text-xs text-gray-500">Weekly sessions</div>
+            <div class="text-xl font-semibold">5 - 6</div>
           </div>
-          <div class="relative">
-            <input id="post-search" type="text" placeholder="Search posts" class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 w-full md:w-72" />
-            <i data-feather="search" class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+          <div class="p-4 rounded-xl bg-gray-50 border border-gray-100 text-center">
+            <div class="text-xs text-gray-500">Avg sleep</div>
+            <div class="text-xl font-semibold">7+ hrs</div>
+          </div>
+          <div class="p-4 rounded-xl bg-gray-50 border border-gray-100 text-center">
+            <div class="text-xs text-gray-500">PR mindset</div>
+            <div class="text-xl font-semibold">Small steps</div>
+          </div>
+          <div class="p-4 rounded-xl bg-gray-50 border border-gray-100 text-center">
+            <div class="text-xs text-gray-500">Work rule</div>
+            <div class="text-xl font-semibold">Ship often</div>
+          </div>
+        </div>
+
+        <!-- Callout -->
+        <div class="flex items-start gap-3 p-5 rounded-xl bg-indigo-50 border border-indigo-100" data-aos="fade-up">
+          <i data-feather="activity" class="text-indigo-600"></i>
+          <p class="text-sm text-indigo-900">The same way progressive overload builds strength, small daily commits build products. Add a little, keep form, repeat.</p>
+        </div>
+
+        <!-- Core sections -->
+        <div class="space-y-10" data-aos="fade-up">
+          <div class="space-y-4">
+            <h2 class="text-2xl font-bold">Why fitness made me better at engineering</h2>
+            <p class="leading-relaxed">Training gave me structure and a feedback loop. It taught me how to show up when motivation is low. The habits below crossed over directly into my work and made me a calmer builder.</p>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-xl font-semibold">1) Progressive overload - but for skills</h3>
+            <p>In the gym you add a little weight, hold form, and repeat. In code that means one tougher ticket each sprint, one cleaner interface, one flaky test retired. I level up like this: add a useful metric, reduce a slow query, tighten a runbook. Small upgrades. Compounding wins.</p>
+            <ul class="list-none space-y-2">
+              <li class="flex items-start"><i data-feather="check-circle" class="text-emerald-600 mr-2"></i><span>One new tool or concept per sprint is enough.</span></li>
+              <li class="flex items-start"><i data-feather="check-circle" class="text-emerald-600 mr-2"></i><span>Thin slices over giant leaps keep risk low.</span></li>
+            </ul>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-xl font-semibold">2) Programs beat vibes</h3>
+            <p>Random workouts give random results. Same with commits. I keep simple programs: push or pull in the gym, plan or build or review at work. When my calendar reflects a plan, my output looks calm, not chaotic.</p>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div class="p-4 rounded-lg border border-gray-100">
+                <div class="text-sm font-medium mb-1">Gym template</div>
+                <ul class="text-sm text-gray-700 list-disc pl-5">
+                  <li>Push or pull split</li>
+                  <li>Track reps and tempo</li>
+                  <li>Progress in small steps</li>
+                </ul>
+              </div>
+              <div class="p-4 rounded-lg border border-gray-100">
+                <div class="text-sm font-medium mb-1">Work template</div>
+                <ul class="text-sm text-gray-700 list-disc pl-5">
+                  <li>Plan, build, review blocks</li>
+                  <li>Document decisions</li>
+                  <li>Automate checks</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-xl font-semibold">3) Recovery is part of the system</h3>
+            <p>Sleep, water, and rest days separate progress from burnout. Production needs the same care: alerts that matter, dashboards you trust, and humane on call rotations. If you never cool down, you are just collecting errors with a smile.</p>
+            <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-700">Rest is not a reward. It is an input.</blockquote>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-xl font-semibold">4) Track the boring numbers</h3>
+            <p>I log reps and pace. At work I log deploys, latency, and failure counts. Numbers remove drama and reveal direction. Dropping a Spark job from hours to minutes feels like new 5K personal best energy.</p>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-xl font-semibold">5) Eat for the goal</h3>
+            <p>I tried OMAD and ADF in different seasons. Both taught me limits and tradeoffs. In engineering, scope is your nutrition. Feed a sprint with everything and nothing digests. Choose a target. Fuel for that target.</p>
+          </div>
+        </div>
+
+        <!-- Image grid -->
+        <div class="grid sm:grid-cols-2 gap-4" data-aos="fade-up">
+          <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74?q=80&w=1200&auto=format&fit=crop" alt="Run prep" class="w-full h-56 object-cover rounded-xl shadow-sm">
+          <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=1200&auto=format&fit=crop" alt="Notebook planning" class="w-full h-56 object-cover rounded-xl shadow-sm">
+        </div>
+
+        <!-- Takeaways and humor -->
+        <div class="space-y-6" data-aos="fade-up">
+          <h2 class="text-2xl font-bold">Relatable truths from the rack</h2>
+          <ul class="list-disc pl-5 space-y-2 text-gray-800">
+            <li>Leg day humility transfers directly to debugging distributed systems.</li>
+            <li>There is always that one rep that feels impossible - just like that one CI job that fails only on Tuesdays.</li>
+            <li>Gym mirrors and production dashboards both tell the truth no matter how you feel.</li>
+            <li>PRs feel lighter when sleep is solid. So do code reviews.</li>
+          </ul>
+
+          <h2 class="text-2xl font-bold">Takeaways for engineers</h2>
+          <ul class="list-disc pl-5 space-y-2 text-gray-800">
+            <li>Make a plan, then make it observable.</li>
+            <li>Small consistent shipping beats weekend heroics.</li>
+            <li>Rest is work that future you will thank you for.</li>
+            <li>Measure wins. Celebrate them. Repeat.</li>
+          </ul>
+
+          <p class="leading-relaxed">If this nudges you toward one extra walk, one tidy refactor, or one early night, that is a win. If you want my training template or a simple sheet to track reps and commits together, ping me and I will share it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing Motivation -->
+    <section class="relative z-10 py-16 bg-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
+        <div class="p-6 md:p-8 rounded-2xl bg-gray-50 border border-gray-200">
+          <h2 class="text-2xl font-bold mb-3">One more rep, one more commit</h2>
+          <p class="text-gray-700 leading-relaxed mb-4">If you are reading this, you already care about your craft. Start tiny today. A ten minute walk. A small refactor. A glass of water. Momentum is quiet at first, then it compounds. That is how I went from stops and starts to a routine that changed my work and my life.</p>
+          <ul class="space-y-2 text-gray-800 mb-6">
+            <li class="flex items-start"><i data-feather="check-circle" class="text-emerald-600 mr-2"></i><span>Pick one habit you can keep for seven days.</span></li>
+            <li class="flex items-start"><i data-feather="check-circle" class="text-emerald-600 mr-2"></i><span>Make it observable. Track it with a note or a tiny dashboard.</span></li>
+            <li class="flex items-start"><i data-feather="check-circle" class="text-emerald-600 mr-2"></i><span>Share a win with a friend or teammate. Celebrate progress, not perfection.</span></li>
+          </ul>
+          <div class="flex flex-wrap gap-3">
+            <a href="#commentForm" class="inline-flex items-center px-5 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"><i data-feather="message-circle" class="mr-2"></i>Tell me your first step</a>
+            <a href="../../index.html#contact" class="inline-flex items-center px-5 py-2 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50"><i data-feather="arrow-right" class="mr-2"></i>Work with me</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Posts Grid -->
-    <section class="relative z-10 py-14 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="posts-grid">
-
-          <!-- Card 1 -->
-          <a href="posts/fitness-habits-for-engineers.html" class="group block bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden" data-category="personal" data-title="fitness habits for engineers">
-            <div class="relative h-44 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Fitness">
-              <span class="absolute top-3 left-3 bg-emerald-600 text-white text-xs px-2 py-1 rounded">Personal</span>
+    <!-- Interactions: Like, Rating, Comments -->
+    <section class="relative z-10 py-12 bg-gray-50">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Like and Rating -->
+        <div class="bg-white rounded-xl shadow-sm p-6 mb-8">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <button id="likeBtn" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700">
+                <i data-feather="heart"></i>
+                <span>Like</span>
+              </button>
+              <span id="likeCount" class="text-gray-600">0 likes</span>
             </div>
-            <div class="p-5">
-              <h3 class="text-lg font-semibold mb-1">Fitness habits that make better engineers</h3>
-              <p class="text-gray-600 text-sm mb-3">Consistency over intensity, progressive overload, and recovery as part of the plan.</p>
-              <div class="flex items-center text-xs text-gray-500 gap-3">
-                <span>Jul 2025</span>
-                <span>•</span>
-                <span>5 min read</span>
+            <div class="flex items-center gap-2">
+              <span class="text-sm text-gray-600">Rate this post:</span>
+              <div id="starRating" class="flex items-center gap-1 text-gray-400 cursor-pointer">
+                <i data-feather="star" data-value="1"></i>
+                <i data-feather="star" data-value="2"></i>
+                <i data-feather="star" data-value="3"></i>
+                <i data-feather="star" data-value="4"></i>
+                <i data-feather="star" data-value="5"></i>
               </div>
+              <span id="ratingLabel" class="text-sm text-gray-600 ml-2">Not rated</span>
             </div>
-          </a>
-
-          <!-- Card 2 -->
-          <a href="posts/spark-performance-checklist.html" class="group block bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden" data-category="deep" data-title="spark performance checklist">
-            <div class="relative h-44 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Spark Performance">
-              <span class="absolute top-3 left-3 bg-indigo-600 text-white text-xs px-2 py-1 rounded">Deep Dive</span>
-            </div>
-            <div class="p-5">
-              <h3 class="text-lg font-semibold mb-1">Spark performance checklist</h3>
-              <p class="text-gray-600 text-sm mb-3">Partitions, joins, caching, file formats, and when to choose coalesce vs repartition.</p>
-              <div class="flex items-center text-xs text-gray-500 gap-3">
-                <span>Sep 2025</span>
-                <span>•</span>
-                <span>8 min read</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Card 3 -->
-          <a href="posts/cicd-for-data-pipelines.html" class="group block bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden" data-category="deep" data-title="cicd for data pipelines">
-            <div class="relative h-44 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981d?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition" alt="CI CD">
-              <span class="absolute top-3 left-3 bg-indigo-600 text-white text-xs px-2 py-1 rounded">Deep Dive</span>
-            </div>
-            <div class="p-5">
-              <h3 class="text-lg font-semibold mb-1">CI and CD for data pipelines</h3>
-              <p class="text-gray-600 text-sm mb-3">Quality gates, tests, env promotion, and safe deploy patterns that keep data trustworthy.</p>
-              <div class="flex items-center text-xs text-gray-500 gap-3">
-                <span>Aug 2025</span>
-                <span>•</span>
-                <span>9 min read</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Card 4 -->
-          <a href="posts/terminal-power-moves.html" class="group block bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden" data-category="hacks" data-title="terminal power moves">
-            <div class="relative h-44 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Terminal">
-              <span class="absolute top-3 left-3 bg-black/70 text-white text-xs px-2 py-1 rounded">Hacks & Tips</span>
-            </div>
-            <div class="p-5">
-              <h3 class="text-lg font-semibold mb-1">5 terminal power moves</h3>
-              <p class="text-gray-600 text-sm mb-3">Cut, jq, ripgrep, rename, and xargs - quick wins that beat opening a notebook.</p>
-              <div class="flex items-center text-xs text-gray-500 gap-3">
-                <span>Aug 2025</span>
-                <span>•</span>
-                <span>4 min read</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Card 5 -->
-          <a href="posts/git-tricks-bisect.html" class="group block bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden" data-category="hacks" data-title="git bisect speedrun">
-            <div class="relative h-44 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Git Tricks">
-              <span class="absolute top-3 left-3 bg-black/70 text-white text-xs px-2 py-1 rounded">Hacks & Tips</span>
-            </div>
-            <div class="p-5">
-              <h3 class="text-lg font-semibold mb-1">3 Git tricks that save releases</h3>
-              <p class="text-gray-600 text-sm mb-3">Use bisect like a pro, craft life‑saving stashes, and recover from bad merges without panic.</p>
-              <div class="flex items-center text-xs text-gray-500 gap-3">
-                <span>Sep 2025</span>
-                <span>•</span>
-                <span>5 min read</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Card 6 -->
-          <a href="posts/synthetic-data-why-it-matters.html" class="group block bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden" data-category="deep" data-title="synthetic data why it matters">
-            <div class="relative h-44 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Synthetic Data">
-              <span class="absolute top-3 left-3 bg-indigo-600 text-white text-xs px-2 py-1 rounded">Deep Dive</span>
-            </div>
-            <div class="p-5">
-              <h3 class="text-lg font-semibold mb-1">Synthetic data - where it shines</h3>
-              <p class="text-gray-600 text-sm mb-3">Privacy, coverage, and faster iteration. When and how to use synthetic sets well.</p>
-              <div class="flex items-center text-xs text-gray-500 gap-3">
-                <span>Jun 2025</span>
-                <span>•</span>
-                <span>7 min read</span>
-              </div>
-            </div>
-          </a>
-
+          </div>
         </div>
 
-        <!-- Load more or CTA -->
-        <div class="text-center mt-12" data-aos="fade-up">
-          <a href="#contact" class="inline-flex items-center px-6 py-3 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition">
-            Request a topic
-            <i data-feather="arrow-right" class="ml-2"></i>
-          </a>
+        <!-- Comments -->
+        <div class="bg-white rounded-xl shadow-sm p-6">
+          <h3 class="text-lg font-semibold mb-4">Comments</h3>
+          <div id="commentsList" class="space-y-4 mb-6"></div>
+
+          <form id="commentForm" class="space-y-3">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <input id="cName" type="text" placeholder="Name" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" required>
+              <input id="cEmail" type="email" placeholder="Email (not published)" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <textarea id="cText" rows="4" placeholder="Leave a comment" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" required></textarea>
+            <button type="submit" class="px-5 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">Post comment</button>
+          </form>
         </div>
       </div>
     </section>
@@ -247,12 +304,12 @@
                     <p class="mt-1">Data & Software Engineer</p>
                 </div>
                 <div class="flex space-x-6">
-                    <a href="../index.html" class="hover:text-white transition">Home</a>
-                    <a href="../about.html" class="hover:text-white transition">About</a>
-                    <a href="../index.html#skills" class="hover:text-white transition">Skills</a>
-                    <a href="../projects/index.html" class="hover:text-white transition">Projects</a>
-                    <a href="#" class="hover:text-white transition">Blog</a>
-                    <a href="../index.html#contact" class="hover:text-white transition">Contact</a>
+                    <a href="../../index.html" class="hover:text-white transition">Home</a>
+                    <a href="../../about.html" class="hover:text-white transition">About</a>
+                    <a href="../../index.html#skills" class="hover:text-white transition">Skills</a>
+                    <a href="../../projects/index.html" class="hover:text-white transition">Projects</a>
+                    <a href="index.html" class="hover:text-white transition">Blog</a>
+                    <a href="../../index.html#contact" class="hover:text-white transition">Contact</a>
                 </div>
             </div>
             <div class="mt-8 pt-8 border-t border-gray-800 text-center text-sm">
@@ -262,32 +319,85 @@
     </footer>
 
     <script>
-      // Simple category filter
-      const filters = document.querySelectorAll('#category-filters button');
-      const cards = document.querySelectorAll('#posts-grid a');
-      filters.forEach(btn => {
-        btn.addEventListener('click', () => {
-          filters.forEach(b => b.classList.remove('active-filter'));
-          btn.classList.add('active-filter');
-          const cat = btn.getAttribute('data-category');
-          cards.forEach(card => {
-            const show = cat === 'all' || card.getAttribute('data-category') === cat;
-            card.classList.toggle('hidden', !show);
-          });
-        });
+      const POST_KEY = 'fitness-habits-for-engineers';
+      const LIKE_KEY = POST_KEY + ':likes';
+      const RATING_KEY = POST_KEY + ':rating';
+      const COMMENTS_KEY = POST_KEY + ':comments';
+
+      // Like button
+      const likeBtn = document.getElementById('likeBtn');
+      const likeCountEl = document.getElementById('likeCount');
+      const storedLikes = parseInt(localStorage.getItem(LIKE_KEY) || '0', 10);
+      likeCountEl.textContent = storedLikes + ' ' + (storedLikes === 1 ? 'like' : 'likes');
+      likeBtn.addEventListener('click', () => {
+        const current = parseInt(localStorage.getItem(LIKE_KEY) || '0', 10) + 1;
+        localStorage.setItem(LIKE_KEY, current);
+        likeCountEl.textContent = current + ' ' + (current === 1 ? 'like' : 'likes');
       });
 
-      // Simple search by title
-      const search = document.getElementById('post-search');
-      if (search) {
-        search.addEventListener('input', () => {
-          const q = search.value.toLowerCase();
-          cards.forEach(card => {
-            const t = card.getAttribute('data-title');
-            card.classList.toggle('hidden', !(t && t.includes(q)));
+      // Star rating
+      const ratingLabel = document.getElementById('ratingLabel');
+      function paintStars(val) {
+        document.querySelectorAll('#starRating svg').forEach((svg, idx) => {
+          if (idx < val) {
+            svg.setAttribute('fill', '#f59e0b');
+            svg.setAttribute('stroke', '#f59e0b');
+          } else {
+            svg.setAttribute('fill', 'none');
+            svg.setAttribute('stroke', 'currentColor');
+          }
+        });
+        ratingLabel.textContent = val ? (val + '/5') : 'Not rated';
+      }
+      function initStars() {
+        const saved = parseInt(localStorage.getItem(RATING_KEY) || '0', 10);
+        paintStars(saved);
+        document.querySelectorAll('#starRating i, #starRating svg').forEach(el => {
+          el.addEventListener('click', () => {
+            const val = parseInt(el.getAttribute('data-value') || el.parentNode.getAttribute('data-value') || '0', 10);
+            localStorage.setItem(RATING_KEY, val);
+            paintStars(val);
           });
         });
       }
+
+      // Comments
+      const commentsList = document.getElementById('commentsList');
+      const commentForm = document.getElementById('commentForm');
+      function renderComments() {
+        const items = JSON.parse(localStorage.getItem(COMMENTS_KEY) || '[]');
+        commentsList.innerHTML = '';
+        if (!items.length) {
+          commentsList.innerHTML = '<p class="text-gray-500 text-sm">Be the first to comment.</p>';
+          return;
+        }
+        items.forEach(c => {
+          const div = document.createElement('div');
+          div.className = 'p-4 border border-gray-200 rounded-lg';
+          const name = c.name ? '<span class="font-semibold">' + c.name + '</span>' : 'Anonymous';
+          const date = new Date(c.ts).toLocaleString();
+          div.innerHTML = '<div class="text-sm text-gray-600 mb-1">' + name + ' • ' + date + '</div><p class="text-gray-700">' + c.text + '</p>';
+          commentsList.appendChild(div);
+        });
+      }
+      commentForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const name = document.getElementById('cName').value.trim();
+        const email = document.getElementById('cEmail').value.trim();
+        const text = document.getElementById('cText').value.trim();
+        if (!text) return;
+        const items = JSON.parse(localStorage.getItem(COMMENTS_KEY) || '[]');
+        items.unshift({ name, email, text, ts: Date.now() });
+        localStorage.setItem(COMMENTS_KEY, JSON.stringify(items));
+        commentForm.reset();
+        renderComments();
+      });
+
+      // Init
+      document.addEventListener('DOMContentLoaded', () => {
+        initStars();
+        renderComments();
+      });
     </script>
     <script>
         // Initialize animations
@@ -339,6 +449,19 @@
                 document.getElementById('mobile-menu').classList.add('hidden');
             });
         });
+
+        // Reading progress bar
+        function setReadbar() {
+          const bar = document.getElementById('readbar');
+          if (!bar) return;
+          const scrollTop = window.scrollY || document.documentElement.scrollTop;
+          const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+          bar.style.width = progress + '%';
+        }
+        document.addEventListener('scroll', setReadbar, { passive: true });
+        window.addEventListener('resize', setReadbar);
+        setReadbar();
     </script>
 </body>
 </html>
