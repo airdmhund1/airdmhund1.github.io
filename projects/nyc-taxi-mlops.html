@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data & Software Engineer Portfolio</title>
+    <title>NYC Taxi MLOps — Project Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -87,325 +87,199 @@
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div data-aos="fade-right">
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                        Hi, I'm <span class="gradient-text">Edmund</span>
+                        <span class="gradient-text">NYC Taxi MLOps</span>
                     </h1>
-                    <h2 class="text-2xl md:text-3xl text-gray-600 mb-8">
-                        Data & Software Engineer
-                    </h2>
+                    <h2 class="text-2xl md:text-3xl text-gray-600 mb-8">End‑to‑End ML System: Data Ingestion → Training → Deployment → Monitoring</h2>
                     <p class="text-lg text-gray-600 mb-8 max-w-lg">
-                        Every dataset has a story, and every system is a canvas. I bring both together by building the software and data pipelines that turn complexity into clarity. Clean code, scalable design, real impact.
+                        A production‑style project that turns raw NYC taxi trips into predictions and insights. This page explains the architecture, tools, and choices behind the pipeline before you jump into the code.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#contact" class="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition shadow-lg">
-                            Contact Me
-                        </a>
-                        <a href="#projects" class="px-6 py-3 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition">
-                            View Projects
-                        </a>
+                        <a href="#overview" class="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition shadow-lg">Read Overview</a>
+                        <a href="#links" class="px-6 py-3 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition">Quick Links</a>
                     </div>
                 </div>
                 <div data-aos="fade-left" class="flex justify-center">
                     <div class="relative">
                         <div class="absolute -inset-4 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-2xl blur opacity-75"></div>
-                        <img src="http://static.photos/technology/640x360/42" alt="Profile" class="relative rounded-2xl w-full max-w-md shadow-2xl">
+                        <img src="http://static.photos/technology/640x360/42" alt="NYC Taxi MLOps" class="relative rounded-2xl w-full max-w-md shadow-2xl">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="relative z-10 py-20 bg-white">
+    <!-- Overview Section (replaces About) -->
+    <section id="overview" class="relative z-10 py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Project Overview</h2>
                 <div class="w-20 h-1 bg-indigo-600 mx-auto"></div>
+                <p class="text-gray-600 mt-4 max-w-3xl mx-auto">An end‑to‑end MLOps workflow for NYC taxi trip data—covering ingestion, validation, feature engineering, model training, experiment tracking, CI/CD, deployment, and monitoring.</p>
             </div>
-            <div class="grid md:grid-cols-2 gap-12 items-center">
+
+            <div class="grid md:grid-cols-2 gap-12 items-start">
                 <div data-aos="fade-right">
-                    <img src="http://static.photos/workspace/640x360/23" alt="About" class="rounded-xl shadow-lg w-full">
-                </div>
-                <div data-aos="fade-left">
-                    <h3 class="text-2xl font-semibold mb-6">Building Data Pipelines & Durable Software</h3>
-                    <p class="text-gray-600 mb-6">
-                        With over 5 years of experience as a Data & Software Engineer, I design and build systems that turn complex data into reliable, usable products. My work bridges data engineering and software development, helping businesses unlock insight, efficiency, and scale.
-                    </p>
-                    <div class="mb-6">
-                        <p class="font-medium mb-3">My toolkit spans a wide stack:</p>
-                        <div class="space-y-2">
-                            <div class="flex items-start">
-                                <i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5"></i>
-                                <span><strong>Data Engineering:</strong> Spark, Airflow/Autosys, Kafka, Hadoop, dbt, ETL/ELT, Streamsets, BigQuery</span>
-                            </div>
-                            <div class="flex items-start">
-                                <i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5"></i>
-                                <span><strong>Software Engineering:</strong> Python, Scala, Java, Node.js, REST & GraphQL APIs, Microservices, Testing</span>
-                            </div>
-                            <div class="flex items-start">
-                                <i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5"></i>
-                                <span><strong>Cloud &amp; DevOps:</strong> AWS, GCP, Azure, Docker, Kubernetes, Terraform, CI/CD, monitoring &amp; observability</span>
-                            </div>
+                    <h3 class="text-2xl font-semibold mb-4">What this project showcases</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5"></i>
+                            <p class="text-gray-700"><strong>Data Ingestion & Quality:</strong> Batch ingestion with Spark; data validation with Great Expectations; schema & drift checks.</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5"></i>
+                            <p class="text-gray-700"><strong>Feature Engineering:</strong> Reproducible transformations; partitioning; feature parity across train/serve.</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5"></i>
+                            <p class="text-gray-700"><strong>Model Training & Tracking:</strong> Scikit‑learn/XGBoost with MLflow tracking, metrics, and artifacts.</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5"></i>
+                            <p class="text-gray-700"><strong>Packaging & CI/CD:</strong> Docker images; GitHub Actions for tests, linting, and pipeline runs.</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5"></i>
+                            <p class="text-gray-700"><strong>Deployment & Serving:</strong> FastAPI service for prediction; environment‑based configs; IaC‑ready layout.</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5"></i>
+                            <p class="text-gray-700"><strong>Monitoring:</strong> Data freshness & quality checks; model performance tracking; alert hooks.</p>
                         </div>
                     </div>
-                    <p class="text-gray-600 mb-6">
-                        I thrive in environments where I can leverage data to solve complex problems and create meaningful impact. My approach combines technical excellence with business acumen to deliver solutions that drive real value.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="flex items-center text-blue-600 hover:text-blue-800">
-                            <i data-feather="download" class="mr-2"></i> Download CV
-                        </a>
-                        <a href="https://www.linkedin.com/in/eaduasamoah/" target="_blank" class="flex items-center text-blue-600 hover:text-blue-800">
-                            <i data-feather="linkedin" class="mr-2"></i> LinkedIn
-                        </a>
+                </div>
+
+                <div data-aos="fade-left">
+                    <h3 class="text-2xl font-semibold mb-4">Architecture (at a glance)</h3>
+                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                        <img src="/assets/projects/nyc-taxi-mlops/architecture.png" alt="NYC Taxi MLOps Architecture" class="rounded-lg w-full mb-4">
+                        <p class="text-sm text-gray-600">High‑level flow: Ingestion → Validation → Feature Engineering → Training/Tracking → Packaging/CI → Serving → Monitoring.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="relative z-10 py-20 bg-gray-50">
+    <!-- Stack Section (replaces Skills) -->
+    <section id="stack" class="relative z-10 py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Technical Skills</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Tech Stack</h2>
                 <div class="w-20 h-1 bg-indigo-600 mx-auto"></div>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Tools chosen for reliability, reproducibility, and smooth hand‑off from experimentation to production.</p>
             </div>
-            
+
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Data Engineering -->
                 <div data-aos="fade-up" data-aos-delay="100" class="bg-white p-8 rounded-xl shadow-md">
                     <div class="flex justify-center mb-6">
                         <div class="bg-indigo-100 p-4 rounded-full">
                             <i data-feather="database" class="text-indigo-600 w-8 h-8"></i>
                         </div>
                     </div>
-                    <h3 class="text-xl font-semibold text-center mb-4">Data Engineering</h3>
+                    <h3 class="text-xl font-semibold text-center mb-4">Data & Features</h3>
                     <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <i data-feather="check" class="text-green-500 mr-2"></i>
-                            <span>Apache Spark</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="check" class="text-green-500 mr-2"></i>
-                            <span>Airflow</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="check" class="text-green-500 mr-2"></i>
-                            <span>SQL & NoSQL</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="check" class="text-green-500 mr-2"></i>
-                            <span>Data Warehousing</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="check" class="text-green-500 mr-2"></i>
-                            <span>ETL Pipelines</span>
-                        </li>
+                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>Spark, Pandas</span></li>
+                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>Great Expectations</span></li>
+                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>Parquet, Partitioning</span></li>
+                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>Feature parity train/serve</span></li>
                     </ul>
                 </div>
-                
-                <!-- Software Development -->
                 <div data-aos="fade-up" data-aos-delay="200" class="bg-white p-8 rounded-xl shadow-md">
                     <div class="flex justify-center mb-6">
                         <div class="bg-purple-100 p-4 rounded-full">
-                            <i data-feather="code" class="text-purple-600 w-8 h-8"></i>
+                            <i data-feather="cpu" class="text-purple-600 w-8 h-8"></i>
                         </div>
                     </div>
-                    <h3 class="text-xl font-semibold text-center mb-4">Software Development</h3>
+                    <h3 class="text-xl font-semibold text-center mb-4">ML & Tracking</h3>
                     <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <i data-feather="check" class="text-green-500 mr-2"></i>
-                            <span>Python</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="check" class="text-green-500 mr-2"></i>
-                            <span>Java</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="check" class="text-green-500 mr-2"></i>
-                            <span>JavaScript/TypeScript</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="check" class="text-green-500 mr-2"></i>
-                            <span>REST APIs</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="check" class="text-green-500 mr-2"></i>
-                            <span>Microservices</span>
-                        </li>
+                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>Scikit‑learn, XGBoost</span></li>
+                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>MLflow (experiments, artifacts)</span></li>
+                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>Model registry (optional)</span></li>
+                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>Evaluation & drift checks</span></li>
                     </ul>
                 </div>
-                
-                <!-- Cloud & DevOps -->
                 <div data-aos="fade-up" data-aos-delay="300" class="bg-white p-8 rounded-xl shadow-md">
                     <div class="flex justify-center mb-6">
-                        <div class="bg-blue-100 p-4 rounded-full">
-                            <i data-feather="cloud" class="text-blue-600 w-8 h-8"></i>
+                            <div class="bg-blue-100 p-4 rounded-full">
+                                <i data-feather="cloud" class="text-blue-600 w-8 h-8"></i>
+                            </div>
                         </div>
-                    </div>
-                    <h3 class="text-xl font-semibold text-center mb-4">Cloud & DevOps</h3>
+                    <h3 class="text-xl font-semibold text-center mb-4">Ops & Delivery</h3>
                     <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <i data-feather="check" class="text-green-500 mr-2"></i>
-                            <span>AWS/GCP</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="check" class="text-green-500 mr-2"></i>
-                            <span>Docker & Kubernetes</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="check" class="text-green-500 mr-2"></i>
-                            <span>Terraform</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="check" class="text-green-500 mr-2"></i>
-                            <span>CI/CD Pipelines</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="check" class="text-green-500 mr-2"></i>
-                            <span>Monitoring & Logging</span>
-                        </li>
+                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>Docker, Makefile</span></li>
+                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>GitHub Actions (CI/CD)</span></li>
+                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>FastAPI service</span></li>
+                        <li class="flex items-center"><i data-feather="check" class="text-green-500 mr-2"></i><span>IaC‑ready (Terraform layout)</span></li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="relative z-10 py-20 bg-white">
+    <!-- Screenshots/Results Section (replaces Projects) -->
+    <section id="gallery" class="relative z-10 py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Screenshots & Results</h2>
                 <div class="w-20 h-1 bg-indigo-600 mx-auto"></div>
-                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Here are some of my recent projects. Click on any to view the source code and details.</p>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Drop your screenshots here—data validation runs, MLflow experiments, CI pipelines, and service responses.</p>
             </div>
-            
+
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <a href="https://github.com/yourusername/project1" target="_blank" class="project-card block bg-white rounded-xl shadow-md overflow-hidden transition duration-300 hover:no-underline">
-                    <div class="relative h-48 overflow-hidden">
-                        <img src="http://static.photos/technology/640x360/101" alt="Project 1" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                        <div class="absolute bottom-4 left-4">
-                            <h3 class="text-white text-xl font-semibold">Real-time Data Pipeline</h3>
-                        </div>
-                    </div>
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="/assets/projects/nyc-taxi-mlops/screen-mlflow.png" alt="MLflow Experiments" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <p class="text-gray-600 mb-4">A scalable real-time data processing pipeline using Kafka and Spark Streaming for processing millions of events per second.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">Apache Kafka</span>
-                            <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">Spark</span>
-                            <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">Python</span>
-                        </div>
+                        <h3 class="text-lg font-semibold mb-2">MLflow Experiments</h3>
+                        <p class="text-gray-600 text-sm">Tracked runs, parameters, metrics, and artifacts for full reproducibility.</p>
                     </div>
-                </a>
-                
-                <!-- Project 2 -->
-                <a href="https://github.com/yourusername/project2" target="_blank" class="project-card block bg-white rounded-xl shadow-md overflow-hidden transition duration-300 hover:no-underline">
-                    <div class="relative h-48 overflow-hidden">
-                        <img src="http://static.photos/technology/640x360/102" alt="Project 2" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                        <div class="absolute bottom-4 left-4">
-                            <h3 class="text-white text-xl font-semibold">ML Feature Store</h3>
-                        </div>
-                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="/assets/projects/nyc-taxi-mlops/screen-ge.png" alt="Great Expectations" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <p class="text-gray-600 mb-4">Centralized feature store for machine learning teams to share, discover, and reuse features across projects.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Python</span>
-                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">FastAPI</span>
-                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Redis</span>
-                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Data Quality Checks</h3>
+                        <p class="text-gray-600 text-sm">Great Expectations suite catching schema issues and outliers early.</p>
                     </div>
-                </a>
-                
-                <!-- Project 3 -->
-                <a href="https://github.com/yourusername/project3" target="_blank" class="project-card block bg-white rounded-xl shadow-md overflow-hidden transition duration-300 hover:no-underline">
-                    <div class="relative h-48 overflow-hidden">
-                        <img src="http://static.photos/technology/640x360/103" alt="Project 3" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                        <div class="absolute bottom-4 left-4">
-                            <h3 class="text-white text-xl font-semibold">Cloud Data Warehouse</h3>
-                        </div>
-                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="/assets/projects/nyc-taxi-mlops/screen-ci.png" alt="CI Pipelines" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <p class="text-gray-600 mb-4">Modern cloud data warehouse solution with automated ETL pipelines and BI integration.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Snowflake</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Airflow</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">dbt</span>
-                        </div>
+                        <h3 class="text-lg font-semibold mb-2">CI/CD Pipeline</h3>
+                        <p class="text-gray-600 text-sm">GitHub Actions: tests, linting, image build, and deploy steps.</p>
                     </div>
-                </a>
-                
-                <!-- Project 4 -->
-                <a href="https://github.com/yourusername/project4" target="_blank" class="project-card block bg-white rounded-xl shadow-md overflow-hidden transition duration-300 hover:no-underline">
-                    <div class="relative h-48 overflow-hidden">
-                        <img src="http://static.photos/technology/640x360/104" alt="Project 4" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                        <div class="absolute bottom-4 left-4">
-                            <h3 class="text-white text-xl font-semibold">Data Quality Framework</h3>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-gray-600 mb-4">Automated data quality monitoring system with anomaly detection and alerting capabilities.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Python</span>
-                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Great Expectations</span>
-                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Slack API</span>
-                        </div>
-                    </div>
-                </a>
-                
-                <!-- Project 5 -->
-                <a href="https://github.com/yourusername/project5" target="_blank" class="project-card block bg-white rounded-xl shadow-md overflow-hidden transition duration-300 hover:no-underline">
-                    <div class="relative h-48 overflow-hidden">
-                        <img src="http://static.photos/technology/640x360/105" alt="Project 5" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                        <div class="absolute bottom-4 left-4">
-                            <h3 class="text-white text-xl font-semibold">Serverless Data API</h3>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-gray-600 mb-4">Highly scalable serverless API for accessing and querying large datasets with low latency.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">AWS Lambda</span>
-                            <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">DynamoDB</span>
-                            <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">API Gateway</span>
-                        </div>
-                    </div>
-                </a>
-                
-                <!-- Project 6 -->
-                <a href="https://github.com/yourusername/project6" target="_blank" class="project-card block bg-white rounded-xl shadow-md overflow-hidden transition duration-300 hover:no-underline">
-                    <div class="relative h-48 overflow-hidden">
-                        <img src="http://static.photos/technology/640x360/106" alt="Project 6" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                        <div class="absolute bottom-4 left-4">
-                            <h3 class="text-white text-xl font-semibold">Data Visualization Dashboard</h3>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-gray-600 mb-4">Interactive dashboard for exploring and visualizing complex datasets with real-time updates.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">React</span>
-                            <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">D3.js</span>
-                            <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">Plotly</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            
-            <div class="text-center mt-12" data-aos="fade-up">
-                <a href="https://github.com/airdmhund1" target="_blank" class="inline-flex items-center px-6 py-3 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition">
-                    <i data-feather="github" class="mr-2"></i>
-                    View All Projects on GitHub
-                </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
+    <!-- Links & How to Run Section -->
+    <section id="links" class="relative z-10 py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start"><i data-feather="github" class="mr-2"></i><a href="https://github.com/airdmhund1/nyc-taxi-mlops" target="_blank" class="text-indigo-600 hover:text-indigo-800">View Source Code on GitHub</a></li>
+                        <li class="flex items-start"><i data-feather="book-open" class="mr-2"></i><a href="#overview" class="text-indigo-600 hover:text-indigo-800">Project Overview</a></li>
+                        <li class="flex items-start"><i data-feather="image" class="mr-2"></i><a href="#gallery" class="text-indigo-600 hover:text-indigo-800">Screenshots & Results</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4">How to Run (Local)</h3>
+                    <div class="bg-white rounded-xl border p-4 text-sm text-gray-700">
+                        <p class="mb-2"><strong>Prereqs:</strong> Docker, Make, Python 3.10+</p>
+                        <pre class="bg-gray-900 text-gray-100 p-3 rounded mb-2 overflow-auto"><code>git clone https://github.com/airdmhund1/nyc-taxi-mlops
+                            cd nyc-taxi-mlops
+                            make setup   # install deps / pre-commit
+                            make train   # run training with MLflow tracking
+                            make serve   # start FastAPI for predictions
+                            make test    # unit tests & data checks</code></pre>
+                        <p class="text-gray-600">Environment variables and config files are documented in the repo’s README.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
     <section id="contact" class="relative z-10 py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
