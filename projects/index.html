@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data & Software Engineer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .skill-badge {
+            transition: all 0.3s ease;
+        }
+        .skill-badge:hover {
+            transform: scale(1.05);
+        }
+    </style>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MLR16RB8XD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-MLR16RB8XD');
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div id="vanta-bg" class="fixed top-0 left-0 w-full h-full z-0"></div>
+    
+    <!-- Navigation -->
+    <nav class="relative z-10 bg-white/80 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold gradient-text">EA Solutions</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html" class="text-gray-700 hover:text-indigo-600 transition">Home</a>
+                    <a href="../about.html" class="text-gray-700 hover:text-indigo-600 transition">About</a>
+                    <a href="../index.html#skills" class="text-gray-700 hover:text-indigo-600 transition">Skills</a>
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 transition">Projects</a>
+                    <a href="../blog/index.html" class="text-gray-700 hover:text-indigo-600 transition">Blog</a>
+                    <a href="../index.html#contact" class="text-gray-700 hover:text-indigo-600 transition">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-toggle" class="text-gray-700">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white z-20 p-4">
+        <div class="flex justify-end">
+            <button id="menu-close" class="text-gray-700">
+                <i data-feather="x"></i>
+            </button>
+        </div>
+        <div class="flex flex-col space-y-6 mt-8">
+            <a href="../index.html" class="text-xl text-gray-700 hover:text-indigo-600 transition">Home</a>
+            <a href="../about.html" class="text-xl text-gray-700 hover:text-indigo-600 transition">About</a>
+            <a href="../index.html#skills" class="text-xl text-gray-700 hover:text-indigo-600 transition">Skills</a>
+            <a href="index.html" class="text-xl text-gray-700 hover:text-indigo-600 transition">Projects</a>
+            <a href="../blog/index.html" class="text-xl text-gray-700 hover:text-indigo-600 transition">Blog</a>
+            <a href="../index.html#contact" class="text-xl text-gray-700 hover:text-indigo-600 transition">Contact</a>
+        </div>
+    </div>
+
+    <!-- Projects Hero / Intro -->
+    <section class="relative z-10 py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-white">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto" data-aos="fade-up">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Projects Showcase</h1>
+          <p class="text-gray-600 text-justify text-lg">A curated selection of builds that show how I work end to end. Each project comes with a story; what it solves, the stack behind it, and a link to the code or a live demo so you can explore it yourself. From data pipelines to polished web apps, these are hands-on experiments turned into working systems. Every line of code is mine, built with care and curiosity. Dive in, click around, and enjoy the ride!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters/Search -->
+    <section class="relative z-10 py-6 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4" data-aos="fade-up">
+          <div class="flex flex-wrap gap-2" id="project-filters">
+            <button data-category="all" class="px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 text-sm hover:bg-gray-100 active-filter">All</button>
+            <button data-category="data" class="px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 text-sm hover:bg-gray-100">Data Engineering</button>
+            <button data-category="mlops" class="px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 text-sm hover:bg-gray-100">MLOps</button>
+            <button data-category="cicd" class="px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 text-sm hover:bg-gray-100">CI/CD</button>
+            <button data-category="cli" class="px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 text-sm hover:bg-gray-100">CLI Tools</button>
+            <button data-category="web" class="px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 text-sm hover:bg-gray-100">Web</button>
+          </div>
+          <div class="relative">
+            <input id="project-search" type="text" placeholder="Search projects" class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 w-full md:w-80" />
+            <i data-feather="search" class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="relative z-10 py-14 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+
+          <!-- Project 1: NYC Taxi MLOps -->
+          <a href="nyc-taxi-mlops.html" class="group block bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden project-card" data-category="mlops" data-title="nyc taxi mlops" data-tags="spark mlflow airflow ci cd">
+            <div class="relative h-44 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition" alt="NYC Taxi MLOps">
+              <span class="absolute top-3 left-3 bg-indigo-600 text-white text-xs px-2 py-1 rounded">MLOps</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold mb-1">NYC Taxi - MLOps</h3>
+              <p class="text-gray-600 text-sm mb-3">End to end feature build and model train with tracking, validation, and deploy hooks. Focus on reproducibility and CI/CD.</p>
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span class="bg-gray-100 px-2 py-1 rounded">Spark</span>
+                <span class="bg-gray-100 px-2 py-1 rounded">MLflow</span>
+                <span class="bg-gray-100 px-2 py-1 rounded">Airflow</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Project 2: City Mobility Pulse -->
+          <a href="city-mobility-pulse.html" class="group block bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden project-card" data-category="data" data-title="city mobility pulse" data-tags="streaming kafka geospatial dashboards">
+            <div class="relative h-44 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1505764706515-aa95265c5abc?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition" alt="City Mobility Pulse">
+              <span class="absolute top-3 left-3 bg-emerald-600 text-white text-xs px-2 py-1 rounded">Data Engineering</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold mb-1">City Mobility Pulse</h3>
+              <p class="text-gray-600 text-sm mb-3">Streaming ingestion and aggregation with simple geo visuals to track movement patterns and demand spikes.</p>
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span class="bg-gray-100 px-2 py-1 rounded">Kafka</span>
+                <span class="bg-gray-100 px-2 py-1 rounded">Spark</span>
+                <span class="bg-gray-100 px-2 py-1 rounded">Dashboards</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Project 3: CI/CD Text Stats -->
+          <a href="cicd-textstats.html" class="group block bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden project-card" data-category="cicd" data-title="cicd text stats" data-tags="github actions tests packaging">
+            <div class="relative h-44 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981d?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition" alt="CI CD Text Stats">
+              <span class="absolute top-3 left-3 bg-purple-600 text-white text-xs px-2 py-1 rounded">CI/CD</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold mb-1">Text Stats - CI/CD demo</h3>
+              <p class="text-gray-600 text-sm mb-3">A tiny but useful CLI for word counts and top terms, used to showcase tests, packaging, and release flows.</p>
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span class="bg-gray-100 px-2 py-1 rounded">Python</span>
+                <span class="bg-gray-100 px-2 py-1 rounded">GitHub Actions</span>
+                <span class="bg-gray-100 px-2 py-1 rounded">PyPI</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Project 4: -->
+          
+          <!-- Project 5:  -->
+        
+          <!-- Project 6: CLI Utilities Pack -->
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative z-10 py-8 bg-gray-900 text-gray-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <span class="text-xl font-bold text-white">Edmund Adu Asamoah</span>
+                    <p class="mt-1">Data & Software Engineer</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="../index.html" class="hover:text-white transition">Home</a>
+                    <a href="../about.html" class="hover:text-white transition">About</a>
+                    <a href="../index.html#skills" class="hover:text-white transition">Skills</a>
+                    <a href="index.html" class="hover:text-white transition">Projects</a>
+                    <a href="../blog/index.html" class="hover:text-white transition">Blog</a>
+                    <a href="../index.html#contact" class="hover:text-white transition">Contact</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-sm">
+                <p>&copy; 2025 Edmund Adu Asamoah (EA Solutions). All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+      // Simple category filter for projects
+      const projFilters = document.querySelectorAll('#project-filters button');
+      const projCards = document.querySelectorAll('#projects-grid a');
+      projFilters.forEach(btn => {
+        btn.addEventListener('click', () => {
+          projFilters.forEach(b => b.classList.remove('active-filter'));
+          btn.classList.add('active-filter');
+          const cat = btn.getAttribute('data-category');
+          projCards.forEach(card => {
+            const show = cat === 'all' || card.getAttribute('data-category') === cat;
+            card.classList.toggle('hidden', !show);
+          });
+        });
+      });
+
+      // Simple search by title and tags
+      const projSearch = document.getElementById('project-search');
+      if (projSearch) {
+        projSearch.addEventListener('input', () => {
+          const q = projSearch.value.toLowerCase();
+          projCards.forEach(card => {
+            const t = (card.getAttribute('data-title') || '').toLowerCase();
+            const tags = (card.getAttribute('data-tags') || '').toLowerCase();
+            card.classList.toggle('hidden', !(t.includes(q) || tags.includes(q)));
+          });
+        });
+      }
+    </script>
+    <script>
+        // Initialize animations
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
+        // Initialize Vanta.js background
+        VANTA.NET({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x3b82f6,
+            backgroundColor: 0xf8fafc,
+            points: 12.00,
+            maxDistance: 22.00,
+            spacing: 18.00
+        });
+        
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        document.getElementById('menu-close').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.add('hidden');
+        });
+        
+        // Feather icons
+        feather.replace();
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
