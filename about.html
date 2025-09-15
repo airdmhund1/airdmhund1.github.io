@@ -165,30 +165,35 @@
     <!-- Fitness -->
     <section class="relative z-10 py-14 bg-white">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-2 gap-10 items-start">
-            <div data-aos="fade-right">
-            <h2 class="text-3xl font-bold mb-3">Fitness & Discipline</h2>
-            <p class="text-gray-700">
-                I run, lift, and train 5–6 days a week. At my best, I pair morning cardio with evening weights.
-                The goal isn’t just aesthetics - it’s discipline. The same consistency that builds muscle builds systems:
-                plan, execute, measure, iterate.
-            </p>
-            <ul class="mt-4 list-disc pl-5 text-gray-700 space-y-2">
-                <li>OMAD/ADF phases taught me about trade-offs and sustainability.</li>
-                <li>Programming training blocks mirrors sprint planning.</li>
-                <li>Recovery is part of the process - in code and in the gym.</li>
-            </ul>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
+                <!-- Left column: narrative -->
+                <div class="flex flex-col justify-center h-full space-y-4 md:col-span-7" data-aos="fade-right">
+                    <h2 class="text-3xl font-bold mb-1">Fitness & Discipline</h2>
+                    <p class="text-gray-700">
+                        I run, lift, and train 5–6 days a week. At my best, I pair morning cardio with evening weights.
+                        The goal is not just aesthetics; it is discipline. The same consistency that builds muscle builds systems:
+                        plan, execute, measure, iterate.
+                    </p>
+                    <ul class="mt-2 list-disc pl-5 text-gray-700 space-y-2">
+                        <li>OMAD/ADF phases taught me about trade‑offs and sustainability.</li>
+                        <li>Programming training blocks mirrors sprint planning.</li>
+                        <li>Recovery is part of the process in code and in the gym.</li>
+                    </ul>
+                </div>
+
+                <!-- Right column: principles card with vertical divider -->
+                <div class="md:col-span-5 md:pl-8 md:border-l md:border-gray-100" data-aos="fade-left">
+                    <div class="card p-6">
+                        <h3 class="font-semibold mb-3">Principles I Live By</h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex"><i data-feather="check-circle" class="text-green-500 mr-2"></i>Clarity over cleverness.</li>
+                            <li class="flex"><i data-feather="check-circle" class="text-green-500 mr-2"></i>Make it observable.</li>
+                            <li class="flex"><i data-feather="check-circle" class="text-green-500 mr-2"></i>Automate the boring parts.</li>
+                            <li class="flex"><i data-feather="check-circle" class="text-green-500 mr-2"></i>Ship small, ship often.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="card p-6" data-aos="fade-left">
-            <h3 class="font-semibold mb-3">Principles I Live By</h3>
-            <ul class="space-y-3 text-gray-700">
-                <li class="flex"><i data-feather="check-circle" class="text-green-500 mr-2"></i>Clarity over cleverness.</li>
-                <li class="flex"><i data-feather="check-circle" class="text-green-500 mr-2"></i>Make it observable.</li>
-                <li class="flex"><i data-feather="check-circle" class="text-green-500 mr-2"></i>Automate the boring parts.</li>
-                <li class="flex"><i data-feather="check-circle" class="text-green-500 mr-2"></i>Ship small, ship often.</li>
-            </ul>
-            </div>
-        </div>
         </div>
     </section>
 
@@ -223,26 +228,33 @@
                 to modernize their data platforms and internal tools. I’m <span class="font-semibold">open for consulting</span> project‑based or retained advisory.
             </p>
 
-            <div class="grid md:grid-cols-2 gap-6 mb-6">
-                <div class="card p-6" data-aos="fade-up">
-                    <h3 class="text-lg font-semibold mb-2">How I Can Help</h3>
-                    <ul class="list-disc pl-5 text-gray-700 space-y-2">
-                        <li><span class="font-medium">Micro‑SaaS & Internal Tools:</span> from prototype to launch (auth, billing, deploys).</li>
-                        <li><span class="font-medium">Data Platforms & Pipelines:</span> Spark/Scala/Python, ingestion frameworks, quality gates.</li>
-                        <li><span class="font-medium">CI/CD & DevOps Enablement:</span> tests, quality checks, automated releases, observability.</li>
-                        <li><span class="font-medium">Performance & Cost Tuning:</span> partitioning, join strategy, storage formats, cloud cost controls.</li>
-                        <li><span class="font-medium">Analytics Engineering:</span> dbt modeling, documentation, reproducible environments.</li>
-                    </ul>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center mb-6">
+              <!-- Left column: How I Can Help -->
+              <div class="md:col-span-7" data-aos="fade-up">
+                <div class="card p-6">
+                  <h3 class="text-lg font-semibold mb-2">How I Can Help</h3>
+                  <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                    <li><span class="font-medium">Micro-SaaS & Internal Tools:</span> from prototype to launch (auth, billing, deploys).</li>
+                    <li><span class="font-medium">Data Platforms & Pipelines:</span> Spark/Scala/Python, ingestion frameworks, quality gates.</li>
+                    <li><span class="font-medium">CI/CD & DevOps Enablement:</span> tests, quality checks, automated releases, observability.</li>
+                    <li><span class="font-medium">Performance & Cost Tuning:</span> partitioning, join strategy, storage formats, cloud cost controls.</li>
+                    <li><span class="font-medium">Analytics Engineering:</span> dbt modeling, documentation, reproducible environments.</li>
+                  </ul>
                 </div>
-                <div class="card p-6" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="text-lg font-semibold mb-2">Ways to Work Together</h3>
-                    <ul class="list-disc pl-5 text-gray-700 space-y-2">
-                        <li><span class="font-medium">Consulting Sprints:</span> 1-4 week focused engagements to ship outcomes fast.</li>
-                        <li><span class="font-medium">Advisory:</span> monthly retained guidance on roadmap, reviews, and hiring.</li>
-                        <li><span class="font-medium">Build & Transfer:</span> I build the skeleton, handover with docs and training.</li>
-                        <li><span class="font-medium">Pilots:</span> scoped MVPs to validate value with real users/data.</li>
-                    </ul>
+              </div>
+
+              <!-- Right column: Ways to Work Together with vertical divider -->
+              <div class="md:col-span-5 md:pl-8 md:border-l md:border-gray-100" data-aos="fade-up" data-aos-delay="100">
+                <div class="card p-6">
+                  <h3 class="text-lg font-semibold mb-2">Ways to Work Together</h3>
+                  <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                    <li><span class="font-medium">Consulting Sprints:</span> 1-4 week focused engagements to ship outcomes fast.</li>
+                    <li><span class="font-medium">Advisory:</span> monthly retained guidance on roadmap, reviews, and hiring.</li>
+                    <li><span class="font-medium">Build & Transfer:</span> I build the skeleton, handover with docs and training.</li>
+                    <li><span class="font-medium">Pilots:</span> scoped MVPs to validate value with real users and data.</li>
+                  </ul>
                 </div>
+              </div>
             </div>
 
             <div class="flex flex-wrap gap-3" data-aos="fade-up">
