@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Edmund · Launchpad ⚡️</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="All Edmund’s links in one place. Read the latest blogs, projects, and more." />
+  <link rel="icon" href="/favicon.ico" />
+  <meta property="og:title" content="Edmund · Launchpad" />
+  <meta property="og:description" content="All my links in one place. Latest blogs and projects." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://easolutionz.com/links" />
+  <meta property="og:image" content="https://easolutionz.com/og-image.png" />
+  <style>
+    :root{
+      --bg:#0f1216; --card:#151a21; --text:#e9eef5; --muted:#a6b0bf; --accent:#4da3ff; --ring:rgba(77,163,255,.45);
+      --btn:#1f2630; --btnHover:#27303c;
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f6f8fb; --card:#ffffff; --text:#0d1117; --muted:#5b6676; --accent:#0d6efd; --ring:rgba(13,110,253,.25); --btn:#eef2f8; --btnHover:#e6ecf6; }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, Noto Sans, sans-serif;
+      background:radial-gradient(1200px 600px at 50% -10%, rgba(77,163,255,.12), transparent 60%), var(--bg);
+      color:var(--text); display:flex; align-items:center; justify-content:center; padding:24px;
+    }
+    .wrap{width:100%; max-width:640px}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0)) , var(--card);
+      border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:28px; box-shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+    header{display:flex; gap:16px; align-items:center; margin-bottom:8px}
+    .avatar{
+      width:64px; height:64px; border-radius:14px; background:#222; display:grid; place-items:center; border:1px solid rgba(255,255,255,.08);
+      overflow:hidden;
+    }
+    .avatar svg{width:32px; height:32px; opacity:.9}
+    h1{font-size:1.35rem; line-height:1.2; margin:0 0 4px}
+    .tag{color:var(--muted); font-size:.95rem; margin:0 0 18px}
+    .bio{color:var(--muted); margin:0 0 18px}
+    .links{display:flex; flex-direction:column; gap:12px; margin:18px 0}
+    .btn{
+      appearance:none; display:flex; align-items:center; gap:12px; width:100%; text-decoration:none;
+      border:1px solid rgba(255,255,255,.08); background:var(--btn); color:var(--text); padding:14px 16px;
+      border-radius:12px; font-weight:600; line-height:1.2; transition:transform .08s ease, background .2s ease, border-color .2s ease;
+      box-shadow:0 6px 20px rgba(0,0,0,.12);
+    }
+    .btn small{display:block; font-weight:500; color:var(--muted)}
+    .btn:hover{background:var(--btnHover); transform:translateY(-1px); border-color:var(--ring)}
+    .btn:focus{outline:3px solid var(--ring)}
+    .btn svg{flex:0 0 auto; width:22px; height:22px; opacity:.95}
+    .grid{display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:16px}
+    .icon-btn{
+      display:grid; place-items:center; height:48px; border-radius:10px; background:var(--btn);
+      border:1px solid rgba(255,255,255,.08); text-decoration:none; color:var(--text)
+    }
+    /* Ensure social icons are a consistent small size */
+    .icon-btn svg{ width:22px !important; height:22px !important; opacity:.95; display:block; }
+    .icon-btn:hover{background:var(--btnHover); border-color:var(--ring)}
+    footer{margin-top:18px; color:var(--muted); font-size:.9rem; display:flex; justify-content:space-between; gap:8px; flex-wrap:wrap}
+    .pill{font-size:.8rem; border:1px solid rgba(255,255,255,.14); padding:6px 10px; border-radius:999px}
+    .badge{font-size:.8rem; padding:6px 10px; border-radius:999px; background:rgba(77,163,255,.14); color:var(--accent); border:1px solid var(--ring)}
+    .hidden{display:none}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card" aria-labelledby="title">
+      <header>
+        <div class="avatar" aria-hidden="true">
+          <!-- Replace with your headshot if you have one -->
+          <svg viewBox="0 0 24 24" fill="currentColor" role="img" aria-label="EA logo">
+            <path d="M12 2a10 10 0 100 20 10 10 0 000-20Zm0 4a4 4 0 110 8 4 4 0 010-8Zm0 10c3.31 0 6 1.57 6 3.5V20H6v-.5C6 17.57 8.69 16 12 16Z"/>
+          </svg>
+        </div>
+        <div>
+          <h1 id="title">Edmund · Launchpad ⚡️</h1>
+          <p class="tag">Data & Software Engineer · shipping data things</p>
+        </div>
+      </header>
+
+      <p class="bio">Fresh posts, projects, and things I’m building. Short, sweet, no fluff. Tap a tile and dive in.</p>
+
+      <!-- Hand curated links (edit these) -->
+      <div class="links" id="manual-links">
+        <a class="btn" href="https://easolutionz.com/blog/posts/fitness-habits-for-engineers.html?utm_source=instagram&utm_medium=bio&utm_campaign=links"
+           target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.9 12a5 5 0 015-5h3v2h-3a3 3 0 000 6h3v2h-3a5 5 0 01-5-5Zm6.2 1h3v-2h-3v2Zm4-6h3a5 5 0 010 10h-3v-2h3a3 3 0 100-6h-3V7Z"/></svg>
+          <span>
+            Latest Blog: Fitness habits for engineers
+            <small>Dev‑friendly routines that actually stick</small>
+          </span>
+        </a>
+
+        <a class="btn" href="https://easolutionz.com/about?utm_source=instagram&utm_medium=bio&utm_campaign=links"
+           target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5Zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5Z"/>
+          </svg>
+          <span>
+            Full Bio
+            <small>Who I am, what I do, and where I’m headed</small>
+          </span>
+        </a>
+
+        <a class="btn" href="https://easolutionz.com/blog/index.html?utm_source=instagram&utm_medium=bio&utm_campaign=links"
+           target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 6h16v12H4zM6 8h12v8H6z"/></svg>
+          <span>
+            Field Notes · Data &amp; Dev
+            <small>Deep dives, quick wins, and hard-earned heuristics</small>
+          </span>
+        </a>
+
+        <a class="btn" href="https://easolutionz.com/projects/index.html?utm_source=instagram&utm_medium=bio&utm_campaign=links"
+           target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 7h16v2H4zM4 11h10v2H4zM4 15h7v2H4z"/></svg>
+          <span>
+            Personal Project portfolio
+            <small>Selected builds & demos · ship it</small>
+          </span>
+        </a>
+
+        <a class="btn" href="mailto:eadasamoah@yahoo.com?subject=Hello%20Edmund" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 00-2 2v1.2l10 5.8 10-5.8V6a2 2 0 00-2-2Zm0 6.4l-8 4.6-8-4.6V18a2 2 0 002 2h12a2 2 0 002-2v-7.6Z"/></svg>
+          <span>
+            Contact me
+            <small>Collabs, consulting, or just say hi</small>
+          </span>
+        </a>
+      </div>
+
+      <!-- Optional: auto from JSON (see Option B) -->
+      <div class="links hidden" id="auto-links"></div>
+
+      <div class="grid" aria-label="social links">
+        <a class="icon-btn" href="https://instagram.com/airdmhund" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5Zm5 5a5 5 0 100 10 5 5 0 000-10Zm6.5-.9a1.1 1.1 0 11-2.2 0 1.1 1.1 0 012.2 0Z"/></svg>
+        </a>
+        <a class="icon-btn" href="https://x.com/airdmhund" target="_blank" rel="noopener" aria-label="X">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 3h4.6l5 6.9 5.1-6.9H22l-7.3 9.7L22 21h-4.6l-5.1-7-5.1 7H2l7.6-10L3 3Z"/></svg>
+        </a>
+        <a class="icon-btn" href="https://www.linkedin.com/in/eaduasamoah" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5ZM3 8.98h4v12H3v-12ZM14.5 9a4.5 4.5 0 00-3.5 1.61V9h-4v12h4v-6.7c0-1.77.9-2.8 2.39-2.8 1.34 0 2.11.93 2.11 2.8V21h4v-7c0-3.2-1.7-5-4-5Z"/></svg>
+        </a>
+        <a class="icon-btn" href="https://easolutionz.com" target="_blank" rel="noopener" aria-label="Website">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2Zm6.9 6h-3.2a15.6 15.6 0 00-1.5-3.9A8.05 8.05 0 0118.9 8ZM9.8 4.1A15.6 15.6 0 008.3 8H5.1a8.05 8.05 0 014.7-3.9Zm-4.7 7.9A8 8 0 005.1 16h3.2a15.6 15.6 0 001.5 3.9A8.05 8.05 0 015.1 12Zm9.6 7.9A15.6 15.6 0 0015.7 16h3.2a8.05 8.05 0 01-4.2 3.9ZM15.7 12c0 .7-.1 1.36-.2 2h-6.9a14.7 14.7 0 010-4h6.9c.1.64.2 1.3.2 2Z"/></svg>
+        </a>
+      </div>
+
+      <footer>
+        <span class="pill">Built by Edmund</span>
+        <span class="badge" id="status">Pure signal</span>
+      </footer>
+    </section>
+  </main>
+
+  <!-- Optional JSON auto-fill logic (inactive unless posts.json exists) -->
+  <script>
+    (async function(){
+      try{
+        const r = await fetch('./posts.json', {cache:'no-store'});
+        if(!r.ok) return;
+        const {links=[]} = await r.json();
+        if(!links.length) return;
+        const auto = document.getElementById('auto-links');
+        const man = document.getElementById('manual-links');
+        auto.innerHTML = links.map(item => `
+          <a class="btn" href="${item.url}" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3h14v2H5V3Zm0 6h14v2H5V9Zm0 6h14v2H5v-2Z"/></svg>
+            <span>${item.title}<small>${item.subtitle||''}</small></span>
+          </a>
+        `).join('');
+        man.classList.add('hidden');
+        auto.classList.remove('hidden');
+        document.getElementById('status').textContent = 'Auto from posts.json';
+      }catch(e){}
+    })();
+  </script>
+</body>
+</html>
