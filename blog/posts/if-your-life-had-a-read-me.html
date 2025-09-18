@@ -342,25 +342,90 @@
         </div>
     </footer>
 
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script>
-      const POST_KEY = 'if-your-life-had-a-read-me';
-      const LIKE_KEY = POST_KEY + ':likes';
-      const RATING_KEY = POST_KEY + ':rating';
-      const COMMENTS_KEY = POST_KEY + ':comments';
+      // =============================
+      // Supabase-backed Likes & Comments (shared across devices)
+      // =============================
+      const SUPABASE_URL = "https://xsbhunrwtgflerlktqnd.supabase.co";
+      const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhzYmh1bnJ3dGdmbGVybGt0cW5kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxOTE5NjQsImV4cCI6MjA3Mzc2Nzk2NH0.z6WHMfLqgGMquoJVrVrVe1efco1ZmpSZVBmnyiKGP0I";
+      const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-      // Like button
+      // Use page path as a stable slug (works with GitHub Pages paths)
+      const SLUG = location.pathname.replace(/\/index\.html$/, "");
+
+      // Elements
       const likeBtn = document.getElementById('likeBtn');
       const likeCountEl = document.getElementById('likeCount');
-      const storedLikes = parseInt(localStorage.getItem(LIKE_KEY) || '0', 10);
-      likeCountEl.textContent = storedLikes + ' ' + (storedLikes === 1 ? 'like' : 'likes');
-      likeBtn.addEventListener('click', () => {
-        const current = parseInt(localStorage.getItem(LIKE_KEY) || '0', 10) + 1;
-        localStorage.setItem(LIKE_KEY, current);
-        likeCountEl.textContent = current + ' ' + (current === 1 ? 'like' : 'likes');
-      });
+      const commentsList = document.getElementById('commentsList');
+      const commentForm = document.getElementById('commentForm');
 
-      // Star rating
+      // Ensure a row exists for this post (idempotent)
+      async function ensurePost() {
+        await supabase.from('posts').upsert({ slug: SLUG }, { onConflict: 'slug' });
+      }
+
+      // ----- Likes (shared across devices)
+      async function loadLikes() {
+        const { data } = await supabase
+          .from('posts')
+          .select('likes')
+          .eq('slug', SLUG)
+          .single();
+        const count = data?.likes || 0;
+        if (likeCountEl) likeCountEl.textContent = count + ' ' + (count === 1 ? 'like' : 'likes');
+      }
+
+      async function likeOnce() {
+        const { data } = await supabase.from('posts').select('likes').eq('slug', SLUG).single();
+        const newLikes = (data?.likes || 0) + 1;
+        await supabase.from('posts').upsert({ slug: SLUG, likes: newLikes });
+        await loadLikes();
+        localStorage.setItem('liked:' + SLUG, '1'); // simple duplicate guard per browser
+      }
+
+      // ----- Comments (shared across devices)
+      function esc(s) {
+        return (s || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+      }
+
+      async function loadComments() {
+        const { data } = await supabase
+          .from('comments')
+          .select('*')
+          .eq('slug', SLUG)
+          .order('ts', { ascending: false });
+        const items = data || [];
+        if (!commentsList) return;
+        commentsList.innerHTML = items.length
+          ? items.map(c => `
+            <div class="p-4 border border-gray-200 rounded-lg">
+              <div class="text-sm text-gray-600 mb-1">
+                <span class="font-semibold">${c.name ? esc(c.name) : 'Anonymous'}</span>
+                • ${new Date(c.ts).toLocaleString()}
+              </div>
+              <p class="text-gray-700">${esc(c.text)}</p>
+            </div>`).join('')
+          : '<p class="text-gray-500 text-sm">Be the first to comment.</p>';
+      }
+
+      async function submitComment(e) {
+        e.preventDefault();
+        const name = (document.getElementById('cName')?.value || '').trim();
+        const text = (document.getElementById('cText')?.value || '').trim();
+        if (!text) return;
+        await supabase.from('comments').insert({ slug: SLUG, name, text });
+        e.target.reset();
+        loadComments();
+      }
+
+      // =============================
+      // Local-only Star Rating (kept as-is, not persisted)
+      // =============================
+      const POST_KEY = 'if-your-life-had-a-read-me';
+      const RATING_KEY = POST_KEY + ':rating';
       const ratingLabel = document.getElementById('ratingLabel');
+
       function paintStars(val) {
         document.querySelectorAll('#starRating svg').forEach((svg, idx) => {
           if (idx < val) {
@@ -371,8 +436,9 @@
             svg.setAttribute('stroke', 'currentColor');
           }
         });
-        ratingLabel.textContent = val ? (val + '/5') : 'Not rated';
+        if (ratingLabel) ratingLabel.textContent = val ? (val + '/5') : 'Not rated';
       }
+
       function initStars() {
         const saved = parseInt(localStorage.getItem(RATING_KEY) || '0', 10);
         paintStars(saved);
@@ -385,42 +451,22 @@
         });
       }
 
-      // Comments
-      const commentsList = document.getElementById('commentsList');
-      const commentForm = document.getElementById('commentForm');
-      function renderComments() {
-        const items = JSON.parse(localStorage.getItem(COMMENTS_KEY) || '[]');
-        commentsList.innerHTML = '';
-        if (!items.length) {
-          commentsList.innerHTML = '<p class="text-gray-500 text-sm">Be the first to comment.</p>';
-          return;
-        }
-        items.forEach(c => {
-          const div = document.createElement('div');
-          div.className = 'p-4 border border-gray-200 rounded-lg';
-          const name = c.name ? '<span class="font-semibold">' + c.name + '</span>' : 'Anonymous';
-          const date = new Date(c.ts).toLocaleString();
-          div.innerHTML = '<div class="text-sm text-gray-600 mb-1">' + name + ' • ' + date + '</div><p class="text-gray-700">' + c.text + '</p>';
-          commentsList.appendChild(div);
-        });
-      }
-      commentForm.addEventListener('submit', e => {
-        e.preventDefault();
-        const name = document.getElementById('cName').value.trim();
-        const email = document.getElementById('cEmail').value.trim();
-        const text = document.getElementById('cText').value.trim();
-        if (!text) return;
-        const items = JSON.parse(localStorage.getItem(COMMENTS_KEY) || '[]');
-        items.unshift({ name, email, text, ts: Date.now() });
-        localStorage.setItem(COMMENTS_KEY, JSON.stringify(items));
-        commentForm.reset();
-        renderComments();
-      });
+      // ----- Init
+      document.addEventListener('DOMContentLoaded', async () => {
+        await ensurePost();
+        await loadLikes();
+        await loadComments();
 
-      // Init
-      document.addEventListener('DOMContentLoaded', () => {
-        initStars();
-        renderComments();
+        if (likeBtn) {
+          likeBtn.addEventListener('click', () => {
+            if (localStorage.getItem('liked:' + SLUG)) return; // prevent duplicates per browser
+            likeOnce();
+          });
+        }
+
+        if (commentForm) commentForm.addEventListener('submit', submitComment);
+
+        initStars(); // keep rating local-only for now
       });
     </script>
     <script>
