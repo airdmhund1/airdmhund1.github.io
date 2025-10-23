@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notifications Are Tiny Thieves - Edmund Adu Asamoah</title>
+    <title>Why Millions of Apps Went Dark: The Anatomy of the AWS Outage - Edmund Adu Asamoah</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -98,15 +98,15 @@
         <a href="../index.html" class="inline-flex items-center text-sm text-gray-500 hover:text-indigo-600 mb-6">
           <i data-feather="arrow-left" class="mr-2 h-4 w-4"></i> Back to Blog
         </a>
-        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">Notifications Are Tiny Thieves</h1>
+        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">Why Millions of Apps Went Dark: The Anatomy of the AWS Outage</h1>
         <div class="flex items-center gap-4 text-sm text-gray-500">
           <div class="flex -space-x-2">
             <img src="https://api.dicebear.com/7.x/initials/svg?seed=EA" alt="Edmund" class="w-9 h-9 rounded-full ring-2 ring-white">
           </div>
           <span>By <span class="font-semibold">Edmund Adu Asamoah</span></span>
-          <span>October 15 2025</span>
+          <span>October 20 2025</span>
           <span>•</span>
-          <span>5 min read</span>
+          <span>6 min read</span>
         </div>
       </div>
     </section>
@@ -117,118 +117,97 @@
 
         <!-- Feature image -->
         <figure class="rounded-2xl overflow-hidden shadow-md" data-aos="fade-up">
-          <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?q=80&w=1600&auto=format&fit=crop" alt="Sunrise light over calm landscape" class="w-full h-72 object-cover">
-          <figcaption class="text-sm text-gray-500 px-4 py-3 bg-white">Silence is a productivity feature. Protect your attention like it is money.</figcaption>
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1600&auto=format&fit=crop" alt="Rows of servers in a data center" class="w-full h-72 object-cover">
+          <figcaption class="text-sm text-gray-500 px-4 py-3 bg-white">Even the cloud has cloudy days. Here is how one AWS region took a big part of the internet down.</figcaption>
         </figure>
 
         <!-- Intro paragraphs -->
         <div class="space-y-6 text-gray-800 leading-relaxed" data-aos="fade-up">
-          <p class="text-lg">A ping steals a second. A context switch steals a minute. A distracted hour steals a day. Most phones are set to interrupt you by default. You can flip the default. Silence gives you a clean lane to think, work, and rest.</p>
-          <p>This is not a digital detox. This is a design choice. We will set rules that let people reach you and keep apps quiet. We will build a simple system that keeps your attention safe on busy days and relaxed on slow days.</p>
+          <p class="text-lg">It started as a slow drizzle, timeouts, retries, and dashboards that would not load. Then the lights went out for a lot of the internet. Food delivery stalled, internal tools froze, and streams buffered. An AWS outage rippled across apps that millions use every day.</p>
+          <p>This is a clear look at what likely happened, why one region can shake the web, and what builders can do to keep products usable when the cloud has a bad day.</p>
         </div>
 
         <!-- Quick stats cards -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" data-aos="fade-up">
           <div class="p-4 rounded-xl bg-gray-50 border border-gray-100 text-center">
-            <div class="text-xs text-gray-500">Notifications allowed</div>
-            <div class="text-xl font-semibold">Few</div>
+            <div class="text-xs text-gray-500">Primary region</div>
+            <div class="text-xl font-semibold">US EAST 1</div>
           </div>
           <div class="p-4 rounded-xl bg-gray-50 border border-gray-100 text-center">
-            <div class="text-xs text-gray-500">Focus modes</div>
-            <div class="text-xl font-semibold">2 to 3</div>
+            <div class="text-xs text-gray-500">Blast radius</div>
+            <div class="text-xl font-semibold">Global</div>
           </div>
           <div class="p-4 rounded-xl bg-gray-50 border border-gray-100 text-center">
-            <div class="text-xs text-gray-500">App badges</div>
-            <div class="text-xl font-semibold">Off</div>
+            <div class="text-xs text-gray-500">Root cause class</div>
+            <div class="text-xl font-semibold">Network DNS</div>
           </div>
           <div class="p-4 rounded-xl bg-gray-50 border border-gray-100 text-center">
-            <div class="text-xs text-gray-500">Calendar alerts</div>
-            <div class="text-xl font-semibold">On</div>
+            <div class="text-xs text-gray-500">Service impact</div>
+            <div class="text-xl font-semibold">Auth, APIs</div>
           </div>
         </div>
 
         <!-- Callout -->
         <div class="flex items-start gap-3 p-5 rounded-xl bg-indigo-50 border border-indigo-100" data-aos="fade-up">
-          <i data-feather="smile" class="text-indigo-600"></i>
-          <p class="text-sm text-indigo-900">Silence most apps. Let people through. Fewer pings, better days.</p>
+          <i data-feather="alert-triangle" class="text-indigo-600"></i>
+          <p class="text-sm text-indigo-900">Single regions fail. Design so a regional hiccup does not become a company outage.</p>
         </div>
 
         <!-- Core sections -->
         <div class="space-y-10" data-aos="fade-up">
           <div class="space-y-4">
-            <h2 class="text-2xl font-bold">Why pings feel urgent when they are not</h2>
-            <p class="leading-relaxed">Your brain treats a bell like a person calling your name. Most alerts are not people. They are product features. Your time is the product. Design your defaults so that only real people and real events can break through.</p>
+            <h2 class="text-2xl font-bold">The chain reaction</h2>
+            <p class="leading-relaxed">US EAST 1 carries a lot of control plane traffic. When internal lookups and routing misbehave there, authentication, service discovery, and data replication stumble elsewhere. APIs that depend on internal calls slow down, then fail. Retries pile up and create their own traffic spike.</p>
           </div>
 
           <div class="space-y-4">
-            <h3 class="text-xl font-semibold">1) Pick your default mode</h3>
+            <h3 class="text-xl font-semibold">Technical root cause, simplified</h3>
+            <p class="leading-relaxed">AWS later pointed to a network and DNS problem inside their systems. Misrouted or failing internal DNS means services cannot find each other. Timeouts trigger retries, which increase load, which creates a feedback loop. The fix is to stop the loop, correct routing, and let caches and health checks repopulate.</p>
             <ul class="list-none space-y-2">
-              <li class="flex items-start"><i data-feather="check-circle" class="text-emerald-600 mr-2"></i><span><strong>Day mode:</strong> work focus with calls from favorites and calendar alerts. Everything else quiet.</span></li>
-              <li class="flex items-start"><i data-feather="check-circle" class="text-emerald-600 mr-2"></i><span><strong>Evening mode:</strong> personal time with family and close friends allowed. Work apps blocked.</span></li>
-              <li class="flex items-start"><i data-feather="check-circle" class="text-emerald-600 mr-2"></i><span><strong>Sleep mode:</strong> only emergency calls from favorites. Screen stays dark.</span></li>
-            </ul>
-          </div>
-
-          <div class="space-y-4">
-            <h3 class="text-xl font-semibold">2) Set who can reach you</h3>
-            <ul class="list-none space-y-2">
-              <li class="flex items-start"><i data-feather="users" class="text-emerald-600 mr-2"></i><span>Add favorites on your phone and messaging apps. Let favorites bypass focus. Add your manager or key partner if needed.</span></li>
-              <li class="flex items-start"><i data-feather="users" class="text-emerald-600 mr-2"></i><span>Turn on repeated call allowance so a second call in a short window can pass through.</span></li>
+              <li class="flex items-start"><i data-feather="check-circle" class="text-emerald-600 mr-2"></i><span>Symptom: increased error rates and timeouts for control plane APIs.</span></li>
+              <li class="flex items-start"><i data-feather="check-circle" class="text-emerald-600 mr-2"></i><span>Effect: auth, queueing, and storage endpoints intermittently unreachable.</span></li>
+              <li class="flex items-start"><i data-feather="check-circle" class="text-emerald-600 mr-2"></i><span>Result: downstream customer apps report 5xx errors and stalled jobs.</span></li>
             </ul>
           </div>
 
           <div class="space-y-4">
-            <h3 class="text-xl font-semibold">3) Quiet the noisy app patterns</h3>
-            <ul class="list-none space-y-2">
-              <li class="flex items-start"><i data-feather="sliders" class="text-emerald-600 mr-2"></i><span>Turn off badges. The red dot is a slot machine. Open apps on a schedule instead.</span></li>
-              <li class="flex items-start"><i data-feather="sliders" class="text-emerald-600 mr-2"></i><span>Disable marketing pushes and sound effects. Keep calendar and ride share on.</span></li>
-              <li class="flex items-start"><i data-feather="sliders" class="text-emerald-600 mr-2"></i><span>Batch social media with limits. Move these apps off your first home screen.</span></li>
-            </ul>
+            <h3 class="text-xl font-semibold">Who felt it most</h3>
+            <p class="leading-relaxed">Apps with tight real time loops and many dependencies, streaming, delivery, payments, internal dashboards, and CI runners. Even static sites on S3 and Amplify saw degraded behavior when control plane operations were needed.</p>
           </div>
 
           <div class="space-y-4">
-            <h3 class="text-xl font-semibold">4) Build simple rules that run every day</h3>
-            <ul class="list-none space-y-2">
-              <li class="flex items-start"><i data-feather="clock" class="text-emerald-600 mr-2"></i><span>Time based rules: work focus turns on at start of day, personal focus turns on after hours, sleep focus turns on at night.</span></li>
-              <li class="flex items-start"><i data-feather="map-pin" class="text-emerald-600 mr-2"></i><span>Place based rules: when you arrive at the gym or a meeting room, silence everything for one hour.</span></li>
-              <li class="flex items-start"><i data-feather="calendar" class="text-emerald-600 mr-2"></i><span>Event based rules: during meetings, let calls and calendar alerts through, mute the rest.</span></li>
+            <h3 class="text-xl font-semibold">Why it matters</h3>
+            <p class="leading-relaxed">The internet is concentrated. A single region wobble can cost thousands of businesses money and trust. Resilience is not a checkbox, it is a design choice that touches architecture, operations, and communication.</p>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-xl font-semibold">Lessons for engineers</h3>
+            <ul class="list-disc pl-5 space-y-2">
+              <li>Design for failure. Assume every dependency can be slow or unavailable.</li>
+              <li>Use health checks, timeouts, retries, and circuit breakers to avoid cascades.</li>
+              <li>Spread critical workloads across multiple AZs and regions. Test the failover.</li>
+              <li>Keep a dark launch path for status banners and feature flags when the backend is unhappy.</li>
+              <li>Practice incident drills and write postmortems people can learn from.</li>
             </ul>
           </div>
-        
-
-        <div class="space-y-4">
-            <h3 class="text-xl font-semibold">5) Teach your tools to respect focus</h3>
-            <ul class="list-none space-y-2">
-              <li class="flex items-start"><i data-feather="mail" class="text-emerald-600 mr-2"></i><span>Email: turn off desktop popups. Check at set times and star what matters. Use VIP for real people.</span></li>
-              <li class="flex items-start"><i data-feather="message-circle" class="text-emerald-600 mr-2"></i><span>Chat: set keywords and mentions only. Snooze channels that are not your job. Leave channels you never read.</span></li>
-              <li class="flex items-start"><i data-feather="phone" class="text-emerald-600 mr-2"></i><span>Phone: unknown callers go to voicemail. Favorites can ring. Emergency contacts can always ring.</span></li>
-            </ul>
         </div>
-
-        <div class="space-y-4">
-            <h3 class="text-xl font-semibold">6) A simple script for your team</h3>
-            <p class="leading-relaxed">Tell people how to reach you. For example: I keep notifications off for deep work. If you need me fast, call or tag me. I will check chat at set times. Clear rules reduce stress for everyone.</p>
-        </div>  
-        
 
         <!-- Image grid -->
         <div class="grid sm:grid-cols-2 gap-4" data-aos="fade-up">
-          <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200&auto=format&fit=crop" alt="iPhone on a desk" class="w-full h-56 object-cover rounded-xl shadow-sm">
-          <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1200&auto=format&fit=crop" alt="Phone on table with coffee cup" class="w-full h-56 object-cover rounded-xl shadow-sm">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop" alt="Rows of servers in a data center" class="w-full h-56 object-cover rounded-xl shadow-sm">
+          <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1200&auto=format&fit=crop" alt="Phone with many app icons" class="w-full h-56 object-cover rounded-xl shadow-sm">
         </div>
 
         <!-- Wrap up -->
         <div class="space-y-6 mt-8" data-aos="fade-up">
-          <h2 class="text-2xl font-bold">Defaults that protect your attention</h2>
+          <h2 class="text-2xl font-bold">Key takeaways for teams</h2>
           <ul class="list-disc pl-5 space-y-2 text-gray-800">
-            <li>Keep badges off and sounds off for most apps.</li>
-            <li>Let people through, not apps.</li>
-            <li>Put your focus mode on a schedule so it runs without effort.</li>
-            <li>Review your allow list once a month and prune it.</li>
+            <li>Know your single points of failure and remove them where possible.</li>
+            <li>Keep status pages, runbooks, and contact trees easy to reach.</li>
+            <li>Fail fast and loud inside the team, fail soft for users.</li>
+            <li>After the storm, log what worked and what hurt, then ship one improvement.</li>
           </ul>
-          <p class="leading-relaxed">Attention is a scarce resource. Silence is how you keep it healthy and ready for work and life.</p>
-        </div>
-
+          <p class="leading-relaxed">Outages happen. What matters is how fast you degrade gracefully, how clearly you talk to users, and how you harden the system after.</p>
         </div>
       </div>
     </section>
@@ -237,8 +216,8 @@
     <section class="relative z-10 py-16 bg-white">
       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
         <div class="p-6 md:p-8 rounded-2xl bg-gray-50 border border-gray-200">
-          <h2 class="text-2xl font-bold mb-3">Try the quiet phone for one week</h2>
-          <p class="text-gray-700 leading-relaxed mb-4">Pick two focus modes, set who can reach you, and turn badges off. Keep the rules simple and let them run.</p>
+          <h2 class="text-2xl font-bold mb-3">Run a resilience sprint this week</h2>
+          <p class="text-gray-700 leading-relaxed mb-4">Pick one user facing flow and one backend dependency. Add a failure path, a status banner, and a clear runbook entry. Small steps compound.</p>
           <ul class="space-y-2 text-gray-800 mb-6">
             <li class="flex items-start"><i data-feather="check-circle" class="text-emerald-600 mr-2"></i><span>Turn on a work focus and an evening focus today.</span></li>
             <li class="flex items-start"><i data-feather="check-circle" class="text-emerald-600 mr-2"></i><span>Add your favorites and let repeated calls through. Remove noisy apps from day mode.</span></li>
@@ -398,7 +377,7 @@
       // =============================
       // Local-only Star Rating (unchanged)
       // =============================
-      const POST_KEY = 'notifications-are-tiny-thieves';
+      const POST_KEY = 'aws-outage-anatomy';
       const RATING_KEY = POST_KEY + ':rating';
       const ratingLabel = document.getElementById('ratingLabel');
 
