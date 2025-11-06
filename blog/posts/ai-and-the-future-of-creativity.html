@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI and the Future of Creativity - Edmund Adu Asamoah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .skill-badge {
+            transition: all 0.3s ease;
+        }
+        .skill-badge:hover {
+            transform: scale(1.05);
+        }
+  /* Sticky navigation state */
+  #site-nav { transition: background-color .2s ease, box-shadow .2s ease, color .2s ease; }
+  #site-nav.nav-scrolled { background-color: rgba(17,24,39,.9); box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -2px rgba(0,0,0,.05); }
+  #site-nav.nav-scrolled a { color: #f9fafb !important; }
+  #site-nav.nav-scrolled a:hover { color: #a5b4fc !important; }
+  #site-nav.nav-scrolled .feather { color: #f9fafb !important; }
+    </style>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MLR16RB8XD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-MLR16RB8XD');
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div id="vanta-bg" class="fixed top-0 left-0 w-full h-full z-0"></div>
+    <div id="readbar" class="fixed top-0 left-0 h-1 bg-indigo-600 z-50" style="width:0%"></div>
+    
+    <!-- Navigation -->
+    <nav id="site-nav" class="sticky top-0 z-30 bg-white/80 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold gradient-text">EA Solutionz</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../../index.html" class="text-gray-700 hover:text-indigo-600 transition">Home</a>
+                    <a href="../../about.html" class="text-gray-700 hover:text-indigo-600 transition">About</a>
+                    <a href="../../index.html#skills" class="text-gray-700 hover:text-indigo-600 transition">Skills</a>
+                    <a href="../../projects/index.html" class="text-gray-700 hover:text-indigo-600 transition">Projects</a>
+                    <a href="../index.html" class="text-gray-700 hover:text-indigo-600 transition">Blog</a>
+                    <a href="../../index.html#contact" class="text-gray-700 hover:text-indigo-600 transition">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-toggle" class="text-gray-700">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white z-20 p-4">
+        <div class="flex justify-end">
+            <button id="menu-close" class="text-gray-700">
+                <i data-feather="x"></i>
+            </button>
+        </div>
+        <div class="flex flex-col space-y-6 mt-8">
+            <a href="../../index.html" class="text-xl text-gray-700 hover:text-indigo-600 transition">Home</a>
+            <a href="../../about.html" class="text-xl text-gray-700 hover:text-indigo-600 transition">About</a>
+            <a href="../../index.html#skills" class="text-xl text-gray-700 hover:text-indigo-600 transition">Skills</a>
+            <a href="../../projects/index.html" class="text-xl text-gray-700 hover:text-indigo-600 transition">Projects</a>
+            <a href="../index.html" class="text-xl text-gray-700 hover:text-indigo-600 transition">Blog</a>
+            <a href="../../index.html#contact" class="text-xl text-gray-700 hover:text-indigo-600 transition">Contact</a>
+        </div>
+    </div>
+
+    <!-- Post Hero -->
+    <section class="relative z-10 py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+      <div class="max-w-3xl mx-auto" data-aos="fade-up">
+        <a href="../index.html" class="inline-flex items-center text-sm text-gray-500 hover:text-indigo-600 mb-6">
+          <i data-feather="arrow-left" class="mr-2 h-4 w-4"></i> Back to Blog
+        </a>
+        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">AI and the Future of Creativity</h1>
+        <div class="flex items-center gap-4 text-sm text-gray-500">
+          <div class="flex -space-x-2">
+            <img src="https://api.dicebear.com/7.x/initials/svg?seed=EA" alt="Edmund" class="w-9 h-9 rounded-full ring-2 ring-white">
+          </div>
+          <span>By <span class="font-semibold">Edmund Adu Asamoah</span></span>
+          <span>November 1 2025</span>
+          <span>•</span>
+          <span>6 min read</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Post Body -->
+    <section class="relative z-10 pb-10 md:pb-14 px-4 sm:px-6 lg:px-8 bg-white">
+      <div class="max-w-3xl mx-auto space-y-10">
+
+        <!-- Feature image -->
+        <figure class="rounded-2xl overflow-hidden shadow-md" data-aos="fade-up">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop" alt="Abstract digital art on a screen with code and color" class="w-full h-72 object-cover">
+          <figcaption class="text-sm text-gray-500 px-4 py-3 bg-white">Humans imagine, machines remix. Together they change how ideas move from spark to share.</figcaption>
+        </figure>
+
+        <!-- Intro paragraphs -->
+        <div class="space-y-6 text-gray-800 leading-relaxed" data-aos="fade-up">
+          <p class="text-lg">AI already writes copy, sketches logos, composes melodies, and helps edit photos. Some fear a future where machines replace artists. The more interesting story is different. Tools shift, taste remains human. AI changes the pipeline, not the point. It turns blank pages into starting points and turns good drafts into great ones.</p>
+          <p>This piece explains how modern AI systems create text, images, audio, and code in plain language. We will look at what they are good at, where they fail, and how creatives, engineers, and teams can use them without losing the human voice.</p>
+        </div>
+
+        <!-- Quick stats cards -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" data-aos="fade-up">
+          <div class="p-4 rounded-xl bg-gray-50 border border-gray-100 text-center">
+            <div class="text-xs text-gray-500">What AI does best</div>
+            <div class="text-xl font-semibold">Drafts, variations</div>
+          </div>
+          <div class="p-4 rounded-xl bg-gray-50 border border-gray-100 text-center">
+            <div class="text-xs text-gray-500">Where humans shine</div>
+            <div class="text-xl font-semibold">Taste, context</div>
+          </div>
+          <div class="p-4 rounded-xl bg-gray-50 border border-gray-100 text-center">
+            <div class="text-xs text-gray-500">Risk to manage</div>
+            <div class="text-xl font-semibold">Bias, copying</div>
+          </div>
+          <div class="p-4 rounded-xl bg-gray-50 border border-gray-100 text-center">
+            <div class="text-xs text-gray-500">Best workflow</div>
+            <div class="text-xl font-semibold">Human in loop</div>
+          </div>
+        </div>
+
+        <!-- Callout -->
+        <div class="flex items-start gap-3 p-5 rounded-xl bg-indigo-50 border border-indigo-100" data-aos="fade-up">
+          <i data-feather="feather" class="text-indigo-600"></i>
+          <p class="text-sm text-indigo-900">AI is a power tool. Keep the human in charge of taste, story, and standards.</p>
+        </div>
+
+        <!-- Core sections -->
+        <div class="space-y-10" data-aos="fade-up">
+          <div class="space-y-4">
+            <h2 class="text-2xl font-bold">How generative models create</h2>
+            <p class="leading-relaxed">Modern systems learn patterns from huge datasets. A language model predicts the next token. An image model predicts pixels from text prompts. A music model predicts notes from patterns in audio. None of this is magic. It is statistics and scale guided by careful training.</p>
+            <ul class="list-disc pl-5 space-y-2">
+              <li>Text, transformers with attention learn long range structure in language.</li>
+              <li>Images, diffusion models denoise random noise into pictures that match a prompt.</li>
+              <li>Audio, models map phonemes and timbre to generate speech or melody.</li>
+              <li>Code, models learn common patterns and idioms from public repositories.</li>
+            </ul>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-xl font-semibold">Where AI helps the creative process</h3>
+            <p class="leading-relaxed">Most creative work is not a single flash. It is research, reference gathering, roughs, feedback, and revision. AI is strong at the middle. It speeds up exploration so you can spend more time on composition, taste, and story.</p>
+            <ul class="list-disc pl-5 space-y-2">
+              <li>Ideation, prompt dozens of directions to find surprising angles.</li>
+              <li>Drafting, get first passes for outlines, thumbnails, or melody sketches.</li>
+              <li>Editing, ask for rewrites, tone shifts, color variants, or instrument swaps.</li>
+              <li>Production, upscale, clean, caption, subtitle, and format across channels.</li>
+            </ul>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-xl font-semibold">Where humans stay essential</h3>
+            <p class="leading-relaxed">Taste is judgment. Context is meaning. Strategy is choice. Models do not own a point of view. They remix. You decide what to say, what to leave out, and how it should feel. That is the work that makes an audience care.</p>
+            <ul class="list-disc pl-5 space-y-2">
+              <li>Voice, a consistent style that your audience can recognize and trust.</li>
+              <li>Intent, knowing the goal, the user, and the channel before you create.</li>
+              <li>Standards, checking facts, licenses, safety, and brand fit.</li>
+              <li>Originality, bringing lived experience and new references that a model lacks.</li>
+            </ul>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-xl font-semibold">Risks to manage without fear</h3>
+            <p class="leading-relaxed">Concerns are real, but manageable. Treat AI like any powerful tool, with guardrails.</p>
+            <ul class="list-disc pl-5 space-y-2">
+              <li>Bias, check outputs for harmful stereotypes and correct them.</li>
+              <li>Attribution, avoid training data lookalikes, use prompts that steer away from named artists.</li>
+              <li>Privacy, keep sensitive inputs out of third party tools, or use self hosted options.</li>
+              <li>Consistency, lock styles and palettes with guides so outputs feel like your brand.</li>
+            </ul>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-xl font-semibold">A simple human in the loop workflow</h3>
+            <p class="leading-relaxed">Use AI where speed helps and review where judgment matters.</p>
+            <ol class="list-decimal pl-5 space-y-2">
+              <li>Define the brief, audience, goal, and constraints.</li>
+              <li>Generate options, explore 10 to 20 small variations fast.</li>
+              <li>Select and refine, pick a direction and iterate with targeted prompts.</li>
+              <li>Review, check facts, brand, tone, and rights.</li>
+              <li>Publish and learn, measure response and save what worked into a style guide.</li>
+            </ol>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-xl font-semibold">What this means for careers</h3>
+            <p class="leading-relaxed">Roles shift from pure creation to direction. Designers become directors of exploration. Writers become editors of voice. Musicians become producers who sculpt ideas faster. New roles appear, prompt designers, data curators, style librarians, and AI wranglers for production pipelines.</p>
+          </div>
+        </div>
+
+        <!-- Image grid -->
+        <div class="grid sm:grid-cols-2 gap-4" data-aos="fade-up">
+          <img src="https://images.unsplash.com/photo-1496302662116-35cc4f36df92?q=80&w=1200&auto=format&fit=crop" alt="Designer desk with sketches and color swatches" class="w-full h-56 object-cover rounded-xl shadow-sm">
+          <img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58?q=80&w=1200&auto=format&fit=crop" alt="Person composing on a laptop with MIDI keyboard" class="w-full h-56 object-cover rounded-xl shadow-sm">
+        </div>
+
+        <!-- Wrap up -->
+        <div class="space-y-6 mt-8" data-aos="fade-up">
+          <h2 class="text-2xl font-bold">Key ideas to remember</h2>
+          <ul class="list-disc pl-5 space-y-2 text-gray-800">
+            <li>AI accelerates options. Humans decide what is worth shipping.</li>
+            <li>Use AI for drafts and exploration, save judgment for voice and meaning.</li>
+            <li>Manage risk with review, licensing, and style guides.</li>
+            <li>Treat the workflow like a studio, fast loops, clear briefs, repeatable quality.</li>
+          </ul>
+          <p class="leading-relaxed">Creativity is not replaced by tools. It is amplified by them when you keep taste and story at the center.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing Motivation -->
+    <section class="relative z-10 py-16 bg-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
+        <div class="p-6 md:p-8 rounded-2xl bg-gray-50 border border-gray-200">
+          <h2 class="text-2xl font-bold mb-3">Try a one hour AI studio session</h2>
+          <p class="text-gray-700 leading-relaxed mb-4">Pick a topic, write a 3 line brief, then run quick loops, 10 variations, pick one, refine three times, publish a small piece. Save prompts and outputs that worked.</p>
+          <ul class="space-y-2 text-gray-800 mb-6">
+            <li class="flex items-start"><i data-feather="check-circle" class="text-emerald-600 mr-2"></i><span>Start with a clear brief, audience, channel, and tone.</span></li>
+            <li class="flex items-start"><i data-feather="check-circle" class="text-emerald-600 mr-2"></i><span>Generate fast options, keep what surprises you.</span></li>
+            <li class="flex items-start"><i data-feather="check-circle" class="text-emerald-600 mr-2"></i><span>Refine and review, check facts and fit, then ship.</span></li>
+          </ul>
+          <div class="flex flex-wrap gap-3">
+            <a href="#commentForm" class="inline-flex items-center px-5 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"><i data-feather="message-circle" class="mr-2"></i>Tell me your first step</a>
+            <a href="../../index.html#contact" class="inline-flex items-center px-5 py-2 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50"><i data-feather="arrow-right" class="mr-2"></i>Work with me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactions: Like, Rating, Comments -->
+    <section class="relative z-10 py-12 bg-gray-50">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Like and Rating -->
+        <div class="bg-white rounded-xl shadow-sm p-6 mb-8">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <button id="likeBtn" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700">
+                <i data-feather="heart"></i>
+                <span>Like</span>
+              </button>
+              <span id="likeCount" class="text-gray-600">0 likes</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-sm text-gray-600">Rate this post:</span>
+              <div id="starRating" class="flex items-center gap-1 text-gray-400 cursor-pointer">
+                <i data-feather="star" data-value="1"></i>
+                <i data-feather="star" data-value="2"></i>
+                <i data-feather="star" data-value="3"></i>
+                <i data-feather="star" data-value="4"></i>
+                <i data-feather="star" data-value="5"></i>
+              </div>
+              <span id="ratingLabel" class="text-sm text-gray-600 ml-2">Not rated</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comments -->
+        <div class="bg-white rounded-xl shadow-sm p-6">
+          <h3 class="text-lg font-semibold mb-4">Comments</h3>
+          <div id="commentsList" class="space-y-4 mb-6"></div>
+
+          <form id="commentForm" class="space-y-3">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <input id="cName" type="text" placeholder="Name" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" required>
+            </div>
+            <textarea id="cText" rows="4" placeholder="Leave a comment" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" required></textarea>
+            <button type="submit" class="px-5 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">Post comment</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative z-10 py-8 bg-gray-900 text-gray-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <span class="text-xl font-bold text-white">Edmund Adu Asamoah</span>
+                    <p class="mt-1">A Data & Software Engineer</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="../../index.html" class="hover:text-white transition">Home</a>
+                    <a href="../../about.html" class="hover:text-white transition">About</a>
+                    <a href="../../index.html#skills" class="hover:text-white transition">Skills</a>
+                    <a href="../../projects/index.html" class="hover:text-white transition">Projects</a>
+                    <a href="../index.html" class="hover:text-white transition">Blog</a>
+                    <a href="../../index.html#contact" class="hover:text-white transition">Contact</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-sm">
+                <p>&copy; 2025 Edmund Adu Asamoah (EA Solutionz). All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script>
+      // =============================
+      // Supabase-backed Likes & Comments
+      // =============================
+      const SUPABASE_URL = "https://xsbhunrwtgflerlktqnd.supabase.co";
+      const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhzYmh1bnJ3dGdmbGVybGt0cW5kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxOTE5NjQsImV4cCI6MjA3Mzc2Nzk2NH0.z6WHMfLqgGMquoJVrVrVe1efco1ZmpSZVBmnyiKGP0I";
+      const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+      const SLUG = location.pathname.replace(/\/index\.html$/, "");
+
+      // Elements
+      const likeBtn = document.getElementById('likeBtn');
+      const likeCountEl = document.getElementById('likeCount');
+      const commentsList = document.getElementById('commentsList');
+      const commentForm = document.getElementById('commentForm');
+
+      // Ensure a row exists for this post (idempotent)
+      async function ensurePost() {
+        await supabase.from('posts').upsert({ slug: SLUG }, { onConflict: 'slug' });
+      }
+
+      // ----- Likes (shared across devices)
+      async function loadLikes() {
+        const { data, error } = await supabase
+          .from('posts')
+          .select('likes')
+          .eq('slug', SLUG)
+          .single();
+        const count = data?.likes || 0;
+        if (likeCountEl) likeCountEl.textContent = count + ' ' + (count === 1 ? 'like' : 'likes');
+      }
+
+      async function likeOnce() {
+        // Simple read-modify-write; fine for demo. (Can be replaced with RPC for atomic increment.)
+        const { data } = await supabase.from('posts').select('likes').eq('slug', SLUG).single();
+        const newLikes = (data?.likes || 0) + 1;
+        await supabase.from('posts').upsert({ slug: SLUG, likes: newLikes });
+        await loadLikes();
+        localStorage.setItem('liked:' + SLUG, '1'); // prevent duplicates per browser
+      }
+
+      // ----- Comments (shared across devices)
+      function esc(s) {
+        return (s || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+      }
+
+      async function loadComments() {
+        const { data } = await supabase
+          .from('comments')
+          .select('*')
+          .eq('slug', SLUG)
+          .order('ts', { ascending: false });
+        const items = data || [];
+        if (!commentsList) return;
+        commentsList.innerHTML = items.length
+          ? items.map(c => `
+            <div class="p-4 border border-gray-200 rounded-lg">
+              <div class="text-sm text-gray-600 mb-1">
+                <span class="font-semibold">${c.name ? esc(c.name) : 'Anonymous'}</span>
+                • ${new Date(c.ts).toLocaleString()}
+              </div>
+              <p class="text-gray-700">${esc(c.text)}</p>
+            </div>`).join('')
+          : '<p class="text-gray-500 text-sm">Be the first to comment.</p>';
+      }
+
+      async function submitComment(e) {
+        e.preventDefault();
+        const name = (document.getElementById('cName')?.value || '').trim();
+        const text = (document.getElementById('cText')?.value || '').trim();
+        if (!text) return;
+        await supabase.from('comments').insert({ slug: SLUG, name, text });
+        e.target.reset();
+        loadComments();
+      }
+
+      // =============================
+      // Local-only Star Rating (unchanged)
+      // =============================
+      const POST_KEY = 'ai-and-the-future-of-creativity';
+      const RATING_KEY = POST_KEY + ':rating';
+      const ratingLabel = document.getElementById('ratingLabel');
+
+      function paintStars(val) {
+        document.querySelectorAll('#starRating svg').forEach((svg, idx) => {
+          if (idx < val) {
+            svg.setAttribute('fill', '#f59e0b');
+            svg.setAttribute('stroke', '#f59e0b');
+          } else {
+            svg.setAttribute('fill', 'none');
+            svg.setAttribute('stroke', 'currentColor');
+          }
+        });
+        if (ratingLabel) ratingLabel.textContent = val ? (val + '/5') : 'Not rated';
+      }
+
+      function initStars() {
+        const saved = parseInt(localStorage.getItem(RATING_KEY) || '0', 10);
+        paintStars(saved);
+        document.querySelectorAll('#starRating i, #starRating svg').forEach(el => {
+          el.addEventListener('click', () => {
+            const val = parseInt(el.getAttribute('data-value') || el.parentNode.getAttribute('data-value') || '0', 10);
+            localStorage.setItem(RATING_KEY, val);
+            paintStars(val);
+          });
+        });
+      }
+
+      // ----- Init
+      document.addEventListener('DOMContentLoaded', async () => {
+        await ensurePost();
+        await loadLikes();
+        await loadComments();
+
+        if (likeBtn) {
+          likeBtn.addEventListener('click', () => {
+            if (localStorage.getItem('liked:' + SLUG)) return; // simple duplicate guard
+            likeOnce();
+          });
+        }
+
+        if (commentForm) commentForm.addEventListener('submit', submitComment);
+
+        initStars(); // keep rating local-only for now
+      });
+    </script>
+    <script>
+        // Initialize animations
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
+        // Initialize Vanta.js background
+        VANTA.NET({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x3b82f6,
+            backgroundColor: 0xf8fafc,
+            points: 12.00,
+            maxDistance: 22.00,
+            spacing: 18.00
+        });
+        
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        document.getElementById('menu-close').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.add('hidden');
+        });
+        
+        // Feather icons
+        feather.replace();
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Reading progress bar
+        function setReadbar() {
+          const bar = document.getElementById('readbar');
+          if (!bar) return;
+          const scrollTop = window.scrollY || document.documentElement.scrollTop;
+          const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+          bar.style.width = progress + '%';
+        }
+        document.addEventListener('scroll', setReadbar, { passive: true });
+        window.addEventListener('resize', setReadbar);
+        setReadbar();
+
+        // Sticky nav color toggle on scroll
+        (function(){
+          var nav = document.getElementById('site-nav');
+          if (!nav) return;
+          function onScroll(){
+            if (window.scrollY > 10) { nav.classList.add('nav-scrolled'); }
+            else { nav.classList.remove('nav-scrolled'); }
+          }
+          document.addEventListener('scroll', onScroll, { passive: true });
+          window.addEventListener('load', onScroll);
+          onScroll();
+        })();
+    </script>
+</body>
+</html>
