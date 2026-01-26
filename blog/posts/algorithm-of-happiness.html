@@ -323,6 +323,10 @@
       // Keep it aligned with POST_KEY.
       const SLUG = 'the-algorithm-of-happiness';
 
+      // Per-device guards (prevents the same browser from spamming likes/ratings)
+      const LIKE_GUARD_KEY = 'liked:' + SLUG;
+      const RATED_GUARD_KEY = 'rated:' + SLUG;
+
       // Elements
       const likeBtn = document.getElementById('likeBtn');
       const likeCountEl = document.getElementById('likeCount');
@@ -411,6 +415,46 @@
         await loadLikes();
       }
 
+      async function unlikeOnce() {
+        // Prefer an atomic DB-side decrement via RPC (if you create it in Supabase).
+        try {
+          const { data, error } = await supabaseClient.rpc('decrement_likes', { p_slug: SLUG });
+          if (error) {
+            console.error('[Supabase] decrement_likes rpc error:', error);
+          } else {
+            const count = typeof data === 'number' ? data : (data?.likes ?? 0);
+            if (likeCountEl) likeCountEl.textContent = count + ' ' + (count === 1 ? 'like' : 'likes');
+            return;
+          }
+        } catch (e) {
+          console.error('[Supabase] decrement_likes rpc exception:', e);
+        }
+
+        // Fallback: read-modify-write (less safe under concurrency)
+        const { data, error: readErr } = await supabaseClient
+          .from('posts')
+          .select('likes')
+          .eq('slug', SLUG)
+          .single();
+
+        if (readErr) {
+          console.error('[Supabase] unlikeOnce read error:', readErr);
+          return;
+        }
+
+        const current = data?.likes || 0;
+        const newLikes = current > 0 ? (current - 1) : 0;
+        const { error: writeErr } = await supabaseClient
+          .upsert({ slug: SLUG, likes: newLikes }, { onConflict: 'slug' });
+
+        if (writeErr) {
+          console.error('[Supabase] unlikeOnce write error:', writeErr);
+          return;
+        }
+
+        await loadLikes();
+      }
+
       // ----- Comments (shared across devices)
       function esc(s) {
         return (s || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
@@ -465,7 +509,6 @@
       // =============================
       const POST_KEY = 'the-algorithm-of-happiness';
       const RATING_KEY = POST_KEY + ':rating';
-      const RATED_GUARD_KEY = 'rated:' + POST_KEY;
       const ratingLabel = document.getElementById('ratingLabel');
 
       function paintStars(val) {
@@ -550,15 +593,31 @@
         // Show the DB average (sync across devices)
         loadRating();
 
-        // Local guard so one browser does not spam ratings
-        const alreadyRated = localStorage.getItem(RATED_GUARD_KEY) === '1';
+        // Disable stars if this browser already rated
+        function setStarsDisabled(disabled) {
+          const wrap = document.getElementById('starRating');
+          if (!wrap) return;
+          if (disabled) {
+            wrap.classList.add('opacity-60', 'pointer-events-none');
+          } else {
+            wrap.classList.remove('opacity-60', 'pointer-events-none');
+          }
+        }
+
+        setStarsDisabled(localStorage.getItem(RATED_GUARD_KEY) === '1');
 
         document.querySelectorAll('#starRating i, #starRating svg').forEach(el => {
-          el.addEventListener('click', () => {
-            if (alreadyRated) return;
+          el.addEventListener('click', async () => {
+            if (localStorage.getItem(RATED_GUARD_KEY) === '1') return;
+
             const val = parseInt(el.getAttribute('data-value') || el.parentNode.getAttribute('data-value') || '0', 10);
             if (!val) return;
-            submitRating(val);
+
+            await submitRating(val);
+
+            // Lock for this browser after a successful submission
+            localStorage.setItem(RATED_GUARD_KEY, '1');
+            setStarsDisabled(true);
           });
         });
       }
@@ -570,12 +629,41 @@
         await loadComments();
 
         if (likeBtn) {
+          const likeText = likeBtn.querySelector('span');
+
+          function setLikedUi(isLiked) {
+            // Keep styling subtle, just enough to show state
+            if (isLiked) {
+              likeBtn.classList.remove('bg-indigo-600', 'hover:bg-indigo-700');
+              likeBtn.classList.add('bg-gray-900', 'hover:bg-gray-800');
+              if (likeText) likeText.textContent = 'Liked';
+            } else {
+              likeBtn.classList.remove('bg-gray-900', 'hover:bg-gray-800');
+              likeBtn.classList.add('bg-indigo-600', 'hover:bg-indigo-700');
+              if (likeText) likeText.textContent = 'Like';
+            }
+          }
+
+          // Initial UI state based on this browser
+          setLikedUi(localStorage.getItem(LIKE_GUARD_KEY) === '1');
+
           let liking = false;
           likeBtn.addEventListener('click', async () => {
             if (liking) return;
             liking = true;
+
+            const isLiked = localStorage.getItem(LIKE_GUARD_KEY) === '1';
+
             try {
-              await likeOnce();
+              if (!isLiked) {
+                await likeOnce();
+                localStorage.setItem(LIKE_GUARD_KEY, '1');
+                setLikedUi(true);
+              } else {
+                await unlikeOnce();
+                localStorage.removeItem(LIKE_GUARD_KEY);
+                setLikedUi(false);
+              }
             } finally {
               liking = false;
             }
