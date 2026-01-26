@@ -328,7 +328,10 @@
 
       // Ensure a row exists for this post (idempotent)
       async function ensurePost() {
-        await supabase.from('posts').upsert({ slug: SLUG }, { onConflict: 'slug' });
+        const { error } = await supabase
+          .from('posts')
+          .upsert({ slug: SLUG, likes: 0 }, { onConflict: 'slug' });
+        if (error) console.error('[Supabase] ensurePost error:', error);
       }
 
       // ----- Likes (shared across devices)
@@ -338,15 +341,40 @@
           .select('likes')
           .eq('slug', SLUG)
           .single();
+
+        if (error) {
+          console.error('[Supabase] loadLikes error:', error);
+          if (likeCountEl) likeCountEl.textContent = '0 likes';
+          return;
+        }
+
         const count = data?.likes || 0;
         if (likeCountEl) likeCountEl.textContent = count + ' ' + (count === 1 ? 'like' : 'likes');
       }
 
       async function likeOnce() {
         // Simple read-modify-write; fine for demo. (Can be replaced with RPC for atomic increment.)
-        const { data } = await supabase.from('posts').select('likes').eq('slug', SLUG).single();
+        const { data, error: readErr } = await supabase
+          .from('posts')
+          .select('likes')
+          .eq('slug', SLUG)
+          .single();
+
+        if (readErr) {
+          console.error('[Supabase] likeOnce read error:', readErr);
+          return;
+        }
+
         const newLikes = (data?.likes || 0) + 1;
-        await supabase.from('posts').upsert({ slug: SLUG, likes: newLikes });
+        const { error: writeErr } = await supabase
+          .from('posts')
+          .upsert({ slug: SLUG, likes: newLikes }, { onConflict: 'slug' });
+
+        if (writeErr) {
+          console.error('[Supabase] likeOnce write error:', writeErr);
+          return;
+        }
+
         await loadLikes();
         localStorage.setItem('liked:' + SLUG, '1'); // prevent duplicates per browser
       }
@@ -357,11 +385,16 @@
       }
 
       async function loadComments() {
-        const { data } = await supabase
+        const { data, error } = await supabase
           .from('comments')
           .select('*')
           .eq('slug', SLUG)
           .order('ts', { ascending: false });
+
+        if (error) {
+          console.error('[Supabase] loadComments error:', error);
+        }
+
         const items = data || [];
         if (!commentsList) return;
         commentsList.innerHTML = items.length
@@ -381,13 +414,23 @@
         const name = (document.getElementById('cName')?.value || '').trim();
         const text = (document.getElementById('cText')?.value || '').trim();
         if (!text) return;
-        await supabase.from('comments').insert({ slug: SLUG, name, text });
+
+        const { error } = await supabase
+          .from('comments')
+          .insert({ slug: SLUG, name, text, ts: new Date().toISOString() });
+
+        if (error) {
+          console.error('[Supabase] submitComment error:', error);
+          return;
+        }
+
         e.target.reset();
         loadComments();
       }
 
       // =============================
-      // Local-only Star Rating (unchanged)
+      // Local-only Star Rating (does NOT sync across devices)
+      // If you want ratings stored in Supabase, we will add a `ratings` table and read/write it.
       // =============================
       const POST_KEY = 'the-algorithm-of-happiness';
       const RATING_KEY = POST_KEY + ':rating';
