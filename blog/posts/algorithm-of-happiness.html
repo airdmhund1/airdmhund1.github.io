@@ -631,15 +631,25 @@
         if (likeBtn) {
           const likeText = likeBtn.querySelector('span');
 
+          function normalizeLikeBtn() {
+            // Remove any old disabled state/styles from previous versions
+            likeBtn.disabled = false;
+            likeBtn.classList.remove('opacity-60', 'cursor-not-allowed', 'pointer-events-none');
+          }
+
           function setLikedUi(isLiked) {
+            normalizeLikeBtn();
+
             // Keep styling subtle, just enough to show state
             if (isLiked) {
               likeBtn.classList.remove('bg-indigo-600', 'hover:bg-indigo-700');
               likeBtn.classList.add('bg-gray-900', 'hover:bg-gray-800');
+              likeBtn.setAttribute('aria-pressed', 'true');
               if (likeText) likeText.textContent = 'Liked';
             } else {
               likeBtn.classList.remove('bg-gray-900', 'hover:bg-gray-800');
               likeBtn.classList.add('bg-indigo-600', 'hover:bg-indigo-700');
+              likeBtn.setAttribute('aria-pressed', 'false');
               if (likeText) likeText.textContent = 'Like';
             }
           }
@@ -648,14 +658,17 @@
           setLikedUi(localStorage.getItem(LIKE_GUARD_KEY) === '1');
 
           let liking = false;
-          likeBtn.addEventListener('click', async () => {
+          likeBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            normalizeLikeBtn();
+
             if (liking) return;
             liking = true;
 
-            const isLiked = localStorage.getItem(LIKE_GUARD_KEY) === '1';
+            const isLikedNow = localStorage.getItem(LIKE_GUARD_KEY) === '1';
 
             try {
-              if (!isLiked) {
+              if (!isLikedNow) {
                 await likeOnce();
                 localStorage.setItem(LIKE_GUARD_KEY, '1');
                 setLikedUi(true);
