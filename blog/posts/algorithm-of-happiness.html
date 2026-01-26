@@ -380,7 +380,6 @@
           } else {
             const count = typeof data === 'number' ? data : (data?.likes ?? 0);
             if (likeCountEl) likeCountEl.textContent = count + ' ' + (count === 1 ? 'like' : 'likes');
-            localStorage.setItem('liked:' + SLUG, '1');
             return;
           }
         } catch (e) {
@@ -410,7 +409,6 @@
         }
 
         await loadLikes();
-        localStorage.setItem('liked:' + SLUG, '1');
       }
 
       // ----- Comments (shared across devices)
@@ -572,9 +570,15 @@
         await loadComments();
 
         if (likeBtn) {
-          likeBtn.addEventListener('click', () => {
-            if (localStorage.getItem('liked:' + SLUG)) return; // simple duplicate guard
-            likeOnce();
+          let liking = false;
+          likeBtn.addEventListener('click', async () => {
+            if (liking) return;
+            liking = true;
+            try {
+              await likeOnce();
+            } finally {
+              liking = false;
+            }
           });
         }
 
