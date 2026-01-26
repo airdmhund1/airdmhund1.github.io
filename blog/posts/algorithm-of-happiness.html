@@ -331,10 +331,26 @@
 
       // Ensure a row exists for this post (idempotent)
       async function ensurePost() {
-        const { error } = await supabaseClient
+        // IMPORTANT: do not upsert likes/rating defaults on every page load.
+        // That would overwrite real engagement back to 0.
+        const { data, error: readErr } = await supabaseClient
           .from('posts')
-          .upsert({ slug: SLUG, likes: 0, rating_sum: 0, rating_count: 0 }, { onConflict: 'slug' });
-        if (error) console.error('[Supabase] ensurePost error:', error);
+          .select('slug')
+          .eq('slug', SLUG)
+          .maybeSingle();
+
+        if (readErr) {
+          console.error('[Supabase] ensurePost read error:', readErr);
+          return;
+        }
+
+        if (data?.slug) return; // row already exists
+
+        const { error: insertErr } = await supabaseClient
+          .from('posts')
+          .insert({ slug: SLUG, likes: 0, rating_sum: 0, rating_count: 0 });
+
+        if (insertErr) console.error('[Supabase] ensurePost insert error:', insertErr);
       }
 
       // ----- Likes (shared across devices)
