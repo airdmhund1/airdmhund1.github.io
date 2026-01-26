@@ -319,7 +319,9 @@
       const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhzYmh1bnJ3dGdmbGVybGt0cW5kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxOTE5NjQsImV4cCI6MjA3Mzc2Nzk2NH0.z6WHMfLqgGMquoJVrVrVe1efco1ZmpSZVBmnyiKGP0I";
       const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-      const SLUG = location.pathname.replace(/\/index\.html$/, "");
+      // Use a stable slug so likes/comments remain the same even if the site is accessed via different domains.
+      // Keep it aligned with POST_KEY.
+      const SLUG = 'the-algorithm-of-happiness';
 
       // Elements
       const likeBtn = document.getElementById('likeBtn');
@@ -331,7 +333,7 @@
       async function ensurePost() {
         const { error } = await supabaseClient
           .from('posts')
-          .upsert({ slug: SLUG, likes: 0 }, { onConflict: 'slug' });
+          .upsert({ slug: SLUG, likes: 0, rating_sum: 0, rating_count: 0 }, { onConflict: 'slug' });
         if (error) console.error('[Supabase] ensurePost error:', error);
       }
 
@@ -354,7 +356,22 @@
       }
 
       async function likeOnce() {
-        // Simple read-modify-write; fine for demo. (Can be replaced with RPC for atomic increment.)
+        // Prefer an atomic DB-side increment via RPC.
+        try {
+          const { data, error } = await supabaseClient.rpc('increment_likes', { p_slug: SLUG });
+          if (error) {
+            console.error('[Supabase] increment_likes rpc error:', error);
+          } else {
+            const count = typeof data === 'number' ? data : (data?.likes ?? 0);
+            if (likeCountEl) likeCountEl.textContent = count + ' ' + (count === 1 ? 'like' : 'likes');
+            localStorage.setItem('liked:' + SLUG, '1');
+            return;
+          }
+        } catch (e) {
+          console.error('[Supabase] increment_likes rpc exception:', e);
+        }
+
+        // Fallback: read-modify-write (less safe under concurrency)
         const { data, error: readErr } = await supabaseClient
           .from('posts')
           .select('likes')
@@ -377,7 +394,7 @@
         }
 
         await loadLikes();
-        localStorage.setItem('liked:' + SLUG, '1'); // prevent duplicates per browser
+        localStorage.setItem('liked:' + SLUG, '1');
       }
 
       // ----- Comments (shared across devices)
@@ -430,16 +447,17 @@
       }
 
       // =============================
-      // Local-only Star Rating (does NOT sync across devices)
-      // If you want ratings stored in Supabase, we will add a `ratings` table and read/write it.
+      // Star Rating (syncs via Supabase, guards multiple votes per browser)
       // =============================
       const POST_KEY = 'the-algorithm-of-happiness';
       const RATING_KEY = POST_KEY + ':rating';
+      const RATED_GUARD_KEY = 'rated:' + POST_KEY;
       const ratingLabel = document.getElementById('ratingLabel');
 
       function paintStars(val) {
+        const rounded = Math.round(val || 0);
         document.querySelectorAll('#starRating svg').forEach((svg, idx) => {
-          if (idx < val) {
+          if (idx < rounded) {
             svg.setAttribute('fill', '#f59e0b');
             svg.setAttribute('stroke', '#f59e0b');
           } else {
@@ -447,17 +465,86 @@
             svg.setAttribute('stroke', 'currentColor');
           }
         });
-        if (ratingLabel) ratingLabel.textContent = val ? (val + '/5') : 'Not rated';
+        if (ratingLabel) ratingLabel.textContent = val ? (val.toFixed(1) + '/5') : 'Not rated';
+      }
+
+      async function loadRating() {
+        const { data, error } = await supabaseClient
+          .from('posts')
+          .select('rating_sum, rating_count')
+          .eq('slug', SLUG)
+          .single();
+
+        if (error) {
+          console.error('[Supabase] loadRating error:', error);
+          paintStars(parseFloat(localStorage.getItem(RATING_KEY) || '0') || 0);
+          return;
+        }
+
+        const sum = data?.rating_sum || 0;
+        const count = data?.rating_count || 0;
+        const avg = count > 0 ? (sum / count) : 0;
+        paintStars(avg);
+      }
+
+      async function submitRating(value) {
+        // Prefer atomic DB-side update via RPC.
+        try {
+          const { data, error } = await supabaseClient.rpc('add_rating', { p_slug: SLUG, p_value: value });
+          if (error) {
+            console.error('[Supabase] add_rating rpc error:', error);
+          } else {
+            const avg = data?.avg ?? data?.average ?? data?.rating_avg ?? 0;
+            paintStars(typeof avg === 'number' ? avg : 0);
+            localStorage.setItem(RATING_KEY, String(value));
+            localStorage.setItem(RATED_GUARD_KEY, '1');
+            return;
+          }
+        } catch (e) {
+          console.error('[Supabase] add_rating rpc exception:', e);
+        }
+
+        // Fallback (non-atomic): read current, write new totals
+        const { data, error: readErr } = await supabaseClient
+          .from('posts')
+          .select('rating_sum, rating_count')
+          .eq('slug', SLUG)
+          .single();
+
+        if (readErr) {
+          console.error('[Supabase] submitRating read error:', readErr);
+          return;
+        }
+
+        const sum = (data?.rating_sum || 0) + value;
+        const count = (data?.rating_count || 0) + 1;
+        const { error: writeErr } = await supabaseClient
+          .from('posts')
+          .upsert({ slug: SLUG, rating_sum: sum, rating_count: count }, { onConflict: 'slug' });
+
+        if (writeErr) {
+          console.error('[Supabase] submitRating write error:', writeErr);
+          return;
+        }
+
+        await loadRating();
+        localStorage.setItem(RATING_KEY, String(value));
+        localStorage.setItem(RATED_GUARD_KEY, '1');
       }
 
       function initStars() {
-        const saved = parseInt(localStorage.getItem(RATING_KEY) || '0', 10);
-        paintStars(saved);
+        // Show the DB average (sync across devices)
+        loadRating();
+
+        // Local guard so one browser does not spam ratings
+        const alreadyRated = localStorage.getItem(RATED_GUARD_KEY) === '1';
+
         document.querySelectorAll('#starRating i, #starRating svg').forEach(el => {
           el.addEventListener('click', () => {
+            if (alreadyRated) return;
             const val = parseInt(el.getAttribute('data-value') || el.parentNode.getAttribute('data-value') || '0', 10);
-            localStorage.setItem(RATING_KEY, val);
-            paintStars(val);
+            if (!val) return;
+            submitRating(val);
           });
         });
       }
