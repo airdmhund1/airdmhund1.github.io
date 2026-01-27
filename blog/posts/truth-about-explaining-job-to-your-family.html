@@ -9,6 +9,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -314,56 +315,155 @@
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script>
       // =============================
-      // Supabase-backed Likes & Comments
+      // Supabase-backed Likes, Rating, Comments
       // =============================
       const SUPABASE_URL = "https://xsbhunrwtgflerlktqnd.supabase.co";
       const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhzYmh1bnJ3dGdmbGVybGt0cW5kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxOTE5NjQsImV4cCI6MjA3Mzc2Nzk2NH0.z6WHMfLqgGMquoJVrVrVe1efco1ZmpSZVBmnyiKGP0I";
-      const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-      const SLUG = location.pathname.replace(/\/index\.html$/, "");
+      // Stable per-post slug (do not use location.pathname)
+      const SLUG = 'truth-about-explaining-job-to-your-family';
+
+      // Per-device guards
+      const LIKE_GUARD_KEY = 'liked:' + SLUG;
+      const RATED_GUARD_KEY = 'rated:' + SLUG;
 
       // Elements
       const likeBtn = document.getElementById('likeBtn');
       const likeCountEl = document.getElementById('likeCount');
       const commentsList = document.getElementById('commentsList');
       const commentForm = document.getElementById('commentForm');
+      const ratingLabel = document.getElementById('ratingLabel');
 
-      // Ensure a row exists for this post (idempotent)
+      // Ensure a row exists for this post (insert only)
       async function ensurePost() {
-        await supabase.from('posts').upsert({ slug: SLUG }, { onConflict: 'slug' });
+        const { data, error: readErr } = await supabaseClient
+          .from('posts')
+          .select('slug')
+          .eq('slug', SLUG)
+          .maybeSingle();
+
+        if (readErr) {
+          console.error('[Supabase] ensurePost read error:', readErr);
+          return;
+        }
+
+        if (data?.slug) return;
+
+        const { error: insertErr } = await supabaseClient
+          .from('posts')
+          .insert({ slug: SLUG, likes: 0, rating_sum: 0, rating_count: 0 });
+
+        if (insertErr) console.error('[Supabase] ensurePost insert error:', insertErr);
       }
 
-      // ----- Likes (shared across devices)
+      // ----- Likes (toggle per device)
       async function loadLikes() {
-        const { data, error } = await supabase
+        const { data, error } = await supabaseClient
           .from('posts')
           .select('likes')
           .eq('slug', SLUG)
           .single();
+
+        if (error) {
+          console.error('[Supabase] loadLikes error:', error);
+          if (likeCountEl) likeCountEl.textContent = '0 likes';
+          return;
+        }
+
         const count = data?.likes || 0;
         if (likeCountEl) likeCountEl.textContent = count + ' ' + (count === 1 ? 'like' : 'likes');
       }
 
       async function likeOnce() {
-        // Simple read-modify-write; fine for demo. (Can be replaced with RPC for atomic increment.)
-        const { data } = await supabase.from('posts').select('likes').eq('slug', SLUG).single();
+        try {
+          const { data, error } = await supabaseClient.rpc('increment_likes', { p_slug: SLUG });
+          if (!error) {
+            const count = typeof data === 'number' ? data : (data?.likes ?? 0);
+            if (likeCountEl) likeCountEl.textContent = count + ' ' + (count === 1 ? 'like' : 'likes');
+            return;
+          }
+          console.error('[Supabase] increment_likes rpc error:', error);
+        } catch (e) {
+          console.error('[Supabase] increment_likes rpc exception:', e);
+        }
+
+        const { data, error: readErr } = await supabaseClient
+          .from('posts')
+          .select('likes')
+          .eq('slug', SLUG)
+          .single();
+
+        if (readErr) {
+          console.error('[Supabase] likeOnce read error:', readErr);
+          return;
+        }
+
         const newLikes = (data?.likes || 0) + 1;
-        await supabase.from('posts').upsert({ slug: SLUG, likes: newLikes });
+        const { error: writeErr } = await supabaseClient
+          .from('posts')
+          .upsert({ slug: SLUG, likes: newLikes }, { onConflict: 'slug' });
+
+        if (writeErr) {
+          console.error('[Supabase] likeOnce write error:', writeErr);
+          return;
+        }
+
         await loadLikes();
-        localStorage.setItem('liked:' + SLUG, '1'); // prevent duplicates per browser
       }
 
-      // ----- Comments (shared across devices)
+      async function unlikeOnce() {
+        try {
+          const { data, error } = await supabaseClient.rpc('decrement_likes', { p_slug: SLUG });
+          if (!error) {
+            const count = typeof data === 'number' ? data : (data?.likes ?? 0);
+            if (likeCountEl) likeCountEl.textContent = count + ' ' + (count === 1 ? 'like' : 'likes');
+            return;
+          }
+          console.error('[Supabase] decrement_likes rpc error:', error);
+        } catch (e) {
+          console.error('[Supabase] decrement_likes rpc exception:', e);
+        }
+
+        const { data, error: readErr } = await supabaseClient
+          .from('posts')
+          .select('likes')
+          .eq('slug', SLUG)
+          .single();
+
+        if (readErr) {
+          console.error('[Supabase] unlikeOnce read error:', readErr);
+          return;
+        }
+
+        const current = data?.likes || 0;
+        const newLikes = current > 0 ? (current - 1) : 0;
+        const { error: writeErr } = await supabaseClient
+          .from('posts')
+          .upsert({ slug: SLUG, likes: newLikes }, { onConflict: 'slug' });
+
+        if (writeErr) {
+          console.error('[Supabase] unlikeOnce write error:', writeErr);
+          return;
+        }
+
+        await loadLikes();
+      }
+
+      // ----- Comments
       function esc(s) {
         return (s || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
       }
 
       async function loadComments() {
-        const { data } = await supabase
+        const { data, error } = await supabaseClient
           .from('comments')
           .select('*')
           .eq('slug', SLUG)
           .order('ts', { ascending: false });
+
+        if (error) console.error('[Supabase] loadComments error:', error);
+
         const items = data || [];
         if (!commentsList) return;
         commentsList.innerHTML = items.length
@@ -383,21 +483,25 @@
         const name = (document.getElementById('cName')?.value || '').trim();
         const text = (document.getElementById('cText')?.value || '').trim();
         if (!text) return;
-        await supabase.from('comments').insert({ slug: SLUG, name, text });
+
+        const { error } = await supabaseClient
+          .from('comments')
+          .insert({ slug: SLUG, name, text, ts: new Date().toISOString() });
+
+        if (error) {
+          console.error('[Supabase] submitComment error:', error);
+          return;
+        }
+
         e.target.reset();
         loadComments();
       }
 
-      // =============================
-      // Local-only Star Rating (unchanged)
-      // =============================
-      const POST_KEY = 'truth-about-explaining-job-to-your-family';
-      const RATING_KEY = POST_KEY + ':rating';
-      const ratingLabel = document.getElementById('ratingLabel');
-
+      // ----- Rating (shared average, one vote per device)
       function paintStars(val) {
+        const rounded = Math.round(val || 0);
         document.querySelectorAll('#starRating svg').forEach((svg, idx) => {
-          if (idx < val) {
+          if (idx < rounded) {
             svg.setAttribute('fill', '#f59e0b');
             svg.setAttribute('stroke', '#f59e0b');
           } else {
@@ -405,37 +509,144 @@
             svg.setAttribute('stroke', 'currentColor');
           }
         });
-        if (ratingLabel) ratingLabel.textContent = val ? (val + '/5') : 'Not rated';
+        if (ratingLabel) ratingLabel.textContent = val ? (val.toFixed(1) + '/5') : 'Not rated';
+      }
+
+      async function loadRating() {
+        const { data, error } = await supabaseClient
+          .from('posts')
+          .select('rating_sum, rating_count')
+          .eq('slug', SLUG)
+          .single();
+
+        if (error) {
+          console.error('[Supabase] loadRating error:', error);
+          paintStars(0);
+          return;
+        }
+
+        const sum = data?.rating_sum || 0;
+        const count = data?.rating_count || 0;
+        const avg = count > 0 ? (sum / count) : 0;
+        paintStars(avg);
+      }
+
+      async function submitRating(value) {
+        try {
+          const { data, error } = await supabaseClient.rpc('add_rating', { p_slug: SLUG, p_value: value });
+          if (!error) {
+            const avg = data?.avg ?? data?.average ?? data?.rating_avg ?? 0;
+            paintStars(typeof avg === 'number' ? avg : 0);
+            return;
+          }
+          console.error('[Supabase] add_rating rpc error:', error);
+        } catch (e) {
+          console.error('[Supabase] add_rating rpc exception:', e);
+        }
+
+        const { data, error: readErr } = await supabaseClient
+          .from('posts')
+          .select('rating_sum, rating_count')
+          .eq('slug', SLUG)
+          .single();
+
+        if (readErr) {
+          console.error('[Supabase] submitRating read error:', readErr);
+          return;
+        }
+
+        const sum = (data?.rating_sum || 0) + value;
+        const count = (data?.rating_count || 0) + 1;
+        const { error: writeErr } = await supabaseClient
+          .from('posts')
+          .upsert({ slug: SLUG, rating_sum: sum, rating_count: count }, { onConflict: 'slug' });
+
+        if (writeErr) {
+          console.error('[Supabase] submitRating write error:', writeErr);
+          return;
+        }
+
+        await loadRating();
       }
 
       function initStars() {
-        const saved = parseInt(localStorage.getItem(RATING_KEY) || '0', 10);
-        paintStars(saved);
+        // Convert feather icons to SVG before painting stars
+        if (window.feather && typeof window.feather.replace === 'function') {
+          window.feather.replace();
+        }
+
+        loadRating();
+
+        function setStarsDisabled(disabled) {
+          const wrap = document.getElementById('starRating');
+          if (!wrap) return;
+          if (disabled) wrap.classList.add('opacity-60', 'pointer-events-none');
+          else wrap.classList.remove('opacity-60', 'pointer-events-none');
+        }
+
+        setStarsDisabled(localStorage.getItem(RATED_GUARD_KEY) === '1');
+
         document.querySelectorAll('#starRating i, #starRating svg').forEach(el => {
-          el.addEventListener('click', () => {
+          el.addEventListener('click', async () => {
+            if (localStorage.getItem(RATED_GUARD_KEY) === '1') return;
             const val = parseInt(el.getAttribute('data-value') || el.parentNode.getAttribute('data-value') || '0', 10);
-            localStorage.setItem(RATING_KEY, val);
-            paintStars(val);
+            if (!val) return;
+            await submitRating(val);
+            localStorage.setItem(RATED_GUARD_KEY, '1');
+            setStarsDisabled(true);
           });
         });
       }
 
-      // ----- Init
       document.addEventListener('DOMContentLoaded', async () => {
         await ensurePost();
         await loadLikes();
         await loadComments();
 
         if (likeBtn) {
-          likeBtn.addEventListener('click', () => {
-            if (localStorage.getItem('liked:' + SLUG)) return; // simple duplicate guard
-            likeOnce();
+          const likeText = likeBtn.querySelector('span');
+
+          function setLikedUi(isLiked) {
+            if (isLiked) {
+              likeBtn.classList.remove('bg-indigo-600', 'hover:bg-indigo-700');
+              likeBtn.classList.add('bg-gray-900', 'hover:bg-gray-800');
+              likeBtn.setAttribute('aria-pressed', 'true');
+              if (likeText) likeText.textContent = 'Liked';
+            } else {
+              likeBtn.classList.remove('bg-gray-900', 'hover:bg-gray-800');
+              likeBtn.classList.add('bg-indigo-600', 'hover:bg-indigo-700');
+              likeBtn.setAttribute('aria-pressed', 'false');
+              if (likeText) likeText.textContent = 'Like';
+            }
+          }
+
+          setLikedUi(localStorage.getItem(LIKE_GUARD_KEY) === '1');
+
+          let liking = false;
+          likeBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            if (liking) return;
+            liking = true;
+
+            const isLikedNow = localStorage.getItem(LIKE_GUARD_KEY) === '1';
+            try {
+              if (!isLikedNow) {
+                await likeOnce();
+                localStorage.setItem(LIKE_GUARD_KEY, '1');
+                setLikedUi(true);
+              } else {
+                await unlikeOnce();
+                localStorage.removeItem(LIKE_GUARD_KEY);
+                setLikedUi(false);
+              }
+            } finally {
+              liking = false;
+            }
           });
         }
 
         if (commentForm) commentForm.addEventListener('submit', submitComment);
-
-        initStars(); // keep rating local-only for now
+        initStars();
       });
     </script>
     <script>
